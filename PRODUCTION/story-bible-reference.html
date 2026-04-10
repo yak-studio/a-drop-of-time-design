@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story bible reference | A Drop of Time</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <p class="crumbs"><a href="../MASTER.html">MASTER</a> / <a href="index.html">PRODUCTION</a> / Story bible reference</p>
+  <h1>Story bible reference</h1>
+  <p class="lead">Canonical narrative design lives in <code>DOCS/</code> only — no duplicate bible in the repo.</p>
+</header>
+<main id="main" class="content">
+
+<h2 id="canonical">Canonical location</h2>
+<p><strong><code>DOCS/</code></strong> is the source of truth (HTML + <code>styles.css</code> + <code>nav.js</code>). Content was merged from production bible <strong>v4.4</strong> narrative on <strong>2026-04-10</strong> into structured pages (<a href="../STORY/lore-world-rules.html">lore</a>, <a href="../STORY/plot-and-acts.html">plot</a>, <a href="../LEVEL_DESIGN/act-i-forest-horizontal.html">act beats</a>, etc.).</p>
+
+<div class="callout">
+  <strong>What was not cloned verbatim:</strong> The old interactive bible’s <em>implementation</em> (modals, every <code>P01</code>-style beat ID, sidebar storyboard chrome) was not copied file-for-file. Design <strong>locks and beats</strong> were carried into DOCS. If you need legacy beat IDs back, add them beside markers in <a href="../LEVEL_DESIGN/section-breakdown.html">section breakdown</a> or sprint docs — don’t resurrect a second bible file.
+</div>
+
+<h2 id="github-pages">GitHub Pages (this repo)</h2>
+<p>The workflow <code>.github/workflows/docs-github-pages.yml</code> deploys the <strong>DOCS</strong> folder whenever you push to <code>main</code> or <code>master</code> (and on manual “Run workflow”).</p>
+<ol>
+  <li>Create a GitHub repo and push this project.</li>
+  <li>Repo <strong>Settings → Pages</strong> → Build and deployment → <strong>Source: GitHub Actions</strong>.</li>
+  <li>Push a change under <code>DOCS/</code> (or run the workflow manually). The site URL will look like <code>https://&lt;user&gt;.github.io/&lt;repo&gt;/</code> — <a href="../index.html"><code>index.html</code></a> redirects to <code>MASTER.html</code>.</li>
+</ol>
+
+<h2 id="llm-push">Can an LLM push for you?</h2>
+<p><strong>Desktop (Cursor / agent with git):</strong> Yes, if the tool session has permission to run <code>git commit</code> / <code>git push</code> and your credentials/SSH are set up. That’s “this environment pushing,” not magic from the model alone.</p>
+<p><strong>Phone:</strong> Typical chat LLM apps <strong>cannot</strong> push to your GitHub repo by themselves. You’d use the <strong>GitHub</strong> app / mobile web (<code>github.dev</code>) / <strong>Working Copy</strong> (iOS) to commit, or copy files the LLM wrote and paste or upload them — exactly as you said: <em>get the new files, replace, push yourself</em> — that always works.</p>
+
+<h2 id="llm">LLM usage</h2>
+<p>Load <a href="../MASTER.html">MASTER</a> → then <a href="../STORY/lore-world-rules.html">lore</a> + <a href="../STORY/plot-and-acts.html">plot</a> + relevant <a href="../LEVEL_DESIGN/act-i-forest-horizontal.html">act beat</a> page. Log contradictions in <a href="open-decisions-log.html">open decisions</a>.</p>
+
+</main>
+<footer class="site-footer"><a href="../MASTER.html">← MASTER</a> · <a href="index.html">PRODUCTION index</a></footer>
+<script id="adot-doc-nav" data-depth="1" src="../nav.js"></script>
+</body>
+</html>

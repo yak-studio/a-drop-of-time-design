@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MASTER — A Drop of Time (documentation map)</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <p class="crumbs">DOCS / MASTER</p>
+  <h1>MASTER — documentation map</h1>
+  <p class="lead">Single entry point for humans and LLMs. <strong>Start here every session.</strong> Do not treat scattered notes elsewhere as authoritative. Browse like a local site: open <code>MASTER.html</code> from disk (double-click)—every page loads a left sidebar for navigation; <code>file://</code> is enough for normal reading. If anything is blocked, run <code>python -m http.server</code> from the <code>DOCS/</code> folder and open <code>http://localhost:8000/MASTER.html</code>.</p>
+</header>
+
+<main id="main" class="content">
+
+<p class="tag draft">Living document</p>
+<p class="word-count-note">Game summary target: ~200 words (edit in place as canon firms up).</p>
+
+<section class="pitch" id="what-is-this">
+  <p><strong>A Drop of Time</strong> is a third-person narrative action-adventure about <strong>Mother</strong> and <strong>Father</strong>—parents stranded on separate <strong>planes of reality</strong> after a catastrophic <strong>fracture</strong> in time. What was one world is now a stack of inconsistent rules: memory, matter, and agency leak between layers. The <strong>Temporals</strong> and those who serve them embody the cost of <strong>siphoning</strong> and control. Players switch perspectives, solve <strong>discovery-first</strong> puzzles, fight and flee in set-piece encounters, and learn a <strong>ritual vocabulary</strong>—fire, objects, silhouette language—that ties plot, puzzles, and endings together. <strong>Traversal</strong> and <strong>combat</strong> are character-grounded systems (stamina, hit feel, fracture charge, and later the <strong>Budokai chase</strong>, which must stay consistent with lore). Levels follow a <strong>four-beat zone rhythm</strong> within each act; section data exported from Unity markers lives beside level-design docs. This HTML tree under <code>DOCS/</code> is the <strong>source of truth</strong> for story, systems, production status, open decisions, and sprint execution (<code>_SPRINTS/</code>).</p>
+</section>
+
+<div class="callout">
+  <strong>Execution checklists:</strong> <a href="_SPRINTS/sprint-0.html"><code>_SPRINTS/sprint-0.html</code></a> (Sprint&nbsp;1 wiring) · <a href="_SPRINTS/backlog.html"><code>_SPRINTS/backlog.html</code></a> (Sprints&nbsp;2–6, sections, definition of done). Index: <a href="_SPRINTS/index.html">_SPRINTS</a>.
+</div>
+
+<h2 id="doc-index">Every document (one-line summary)</h2>
+<ul class="doc-list">
+  <li><a href="STORY/index.html">STORY / Hub</a><span class="summary">Index for narrative docs.</span></li>
+  <li><a href="STORY/plot-and-acts.html">Plot &amp; acts</a><span class="summary">Prologue through summit spine; interludes; Warden and argument hinges.</span></li>
+  <li><a href="STORY/lore-world-rules.html">Lore &amp; world rules</a><span class="summary">Planes, collapse, siphoning v4.4, Convergence exits, Companion, Uncle translator.</span></li>
+  <li><a href="STORY/dialogue-per-level.html">Dialogue per level</a><span class="summary">Beats and lines keyed to levels/sections.</span></li>
+  <li><a href="STORY/ritual.html">The ritual</a><span class="summary">Fire, items, silhouette language—standalone ritual layer.</span></li>
+  <li><a href="STORY/endings.html">Endings</a><span class="summary">Exit-order outcomes A / B / C; siphoning consequences.</span></li>
+  <li><a href="CHARACTERS/index.html">CHARACTERS / Hub</a><span class="summary">Index for cast docs.</span></li>
+  <li><a href="CHARACTERS/protagonists.html">Protagonists</a><span class="summary">Mother, Father, Daughter profiles.</span></li>
+  <li><a href="CHARACTERS/uncle.html">The Uncle</a><span class="summary">Dedicated doc—complex relationship and role.</span></li>
+  <li><a href="CHARACTERS/npcs.html">NPCs</a><span class="summary">Warden, Companion, Temporal Engineer, etc.</span></li>
+  <li><a href="CHARACTERS/enemy-archetypes.html">Enemy archetypes</a><span class="summary">Temporals vs deputized; behavioural profiles.</span></li>
+  <li><a href="COMBAT/index.html">COMBAT / Hub</a><span class="summary">Index for combat docs.</span></li>
+  <li><a href="COMBAT/overview.html">Combat overview</a><span class="summary">Tone, Fracture Charge, Teleattack, memory extraction.</span></li>
+  <li><a href="COMBAT/move-sets.html">Move sets</a><span class="summary">Per-character moves and unlock timing.</span></li>
+  <li><a href="COMBAT/encounter-philosophy.html">Encounter design</a><span class="summary">Enemy encounter philosophy and pacing.</span></li>
+  <li><a href="COMBAT/budokai-chase.html">Budokai chase</a><span class="summary">Locked chase mechanic—narrative + consistency with lore.</span></li>
+  <li><a href="PUZZLES/index.html">PUZZLES / Hub</a><span class="summary">Index for puzzle docs.</span></li>
+  <li><a href="PUZZLES/philosophy.html">Puzzle philosophy</a><span class="summary">Discovery first, solution second.</span></li>
+  <li><a href="PUZZLES/designs-per-act.html">Designs per act</a><span class="summary">Puzzle designs grouped by act.</span></li>
+  <li><a href="PUZZLES/mechanic-dependencies.html">Mechanic dependencies</a><span class="summary">Which ability each puzzle requires—cut-safe matrix.</span></li>
+  <li><a href="PUZZLES/puzzle-planner.html">Puzzle planner (legacy HTML)</a><span class="summary">Existing planner tool/page—keep linked until merged.</span></li>
+  <li><a href="LEVEL_DESIGN/index.html">LEVEL DESIGN / Hub</a><span class="summary">Index for layout and cadence.</span></li>
+  <li><a href="LEVEL_DESIGN/cadence-per-act.html">Cadence per act</a><span class="summary">General layout and flow per act.</span></li>
+  <li><a href="LEVEL_DESIGN/section-breakdown.html">Section breakdown</a><span class="summary">Companion to exported section JSON / Unity markers.</span></li>
+  <li><a href="LEVEL_DESIGN/four-beat-rhythm.html">Four-beat zone rhythm</a><span class="summary">Ascent → Clash → Bleed → Breath; bottlenecks; Mountain Rule; nickname.</span></li>
+  <li><a href="LEVEL_DESIGN/act-i-forest-horizontal.html">Act I — Forest beats</a><span class="summary">Horizontal marker journey, combats, runes, Warden sequence.</span></li>
+  <li><a href="LEVEL_DESIGN/act-ii-moraine-horizontal.html">Act II — Moraine beats</a><span class="summary">Item/self teleport beats, traces, revival reveal, siege.</span></li>
+  <li><a href="LEVEL_DESIGN/act-iii-death-zone-horizontal.html">Act III — Death zone beats</a><span class="summary">Dual-boss, Engineer gate, summit, Temporal tally.</span></li>
+  <li><a href="LEVEL_DESIGN/traversal-rules-level.html">Traversal rules (level)</a><span class="summary">What exists per act, elevation profile—level-side constraints.</span></li>
+  <li><a href="TRAVERSAL/index.html">TRAVERSAL / Hub</a><span class="summary">Character movement systems—not room layout.</span></li>
+  <li><a href="TRAVERSAL/movement-and-states.html">Movement &amp; states</a><span class="summary">Animation tree, states, per-character capabilities and gates.</span></li>
+  <li><a href="ART_VISUAL/index.html">ART &amp; VISUAL / Hub</a><span class="summary">Index for look and VFX.</span></li>
+  <li><a href="ART_VISUAL/identity-tone.html">Identity &amp; tone</a><span class="summary">Visual identity and tone reference.</span></li>
+  <li><a href="ART_VISUAL/colour-palette.html">Colour palette</a><span class="summary">Palette per act.</span></li>
+  <li><a href="ART_VISUAL/silhouette-language.html">Silhouette language</a><span class="summary">Rules—load-bearing for ritual and endings.</span></li>
+  <li><a href="ART_VISUAL/vfx-specs.html">VFX specs</a><span class="summary">Impact, shatter, telekinesis, memory extraction, etc.</span></li>
+  <li><a href="ART_VISUAL/planes-visual.html">Planes (visual)</a><span class="summary">How each plane reads differently.</span></li>
+  <li><a href="AUDIO/index.html">AUDIO / Hub</a><span class="summary">Index for music and sound.</span></li>
+  <li><a href="AUDIO/music-system.html">Music system</a><span class="summary">Cuts, retreat, silence rule.</span></li>
+  <li><a href="AUDIO/sound-philosophy.html">Sound philosophy</a><span class="summary">Overall SFX approach.</span></li>
+  <li><a href="AUDIO/ritual-sound.html">Ritual sound</a><span class="summary">Locked cue when ritual item meets fire.</span></li>
+  <li><a href="AUDIO/dialogue-delivery.html">Dialogue delivery</a><span class="summary">Subtitles, colours, cross-plane filter.</span></li>
+  <li><a href="TECHNICAL/index.html">TECHNICAL / Hub</a><span class="summary">Index for engineering reference.</span></li>
+  <li><a href="TECHNICAL/unity-structure.html">Unity structure</a><span class="summary">Project layout and naming conventions.</span></li>
+  <li><a href="TECHNICAL/performance-budgets.html">Performance budgets</a><span class="summary">Targets per act / platform.</span></li>
+  <li><a href="TECHNICAL/mechanic-unlock-ladder.html">Mechanic unlock ladder</a><span class="summary">Act I–III verb introduction order (v4.3 ladder).</span></li>
+  <li><a href="TECHNICAL/graybox-markers.html">Graybox markers</a><span class="summary">Section export / JSON pipeline reference.</span></li>
+  <li><a href="PRODUCTION/index.html">PRODUCTION / Hub</a><span class="summary">Index for schedules and decisions.</span></li>
+  <li><a href="_SPRINTS/index.html"><strong>Sprints</strong></a><span class="summary">Sprint&nbsp;0 execution + full Act&nbsp;I backlog (migrated from legacy TODOs).</span></li>
+  <li><a href="PRODUCTION/master-todo.html">Master TODO</a><span class="summary">Single rolling task list for the project.</span></li>
+  <li><a href="PRODUCTION/iteration-checkpoints.html">Iteration checkpoints</a><span class="summary">Milestones and review gates.</span></li>
+  <li><a href="PRODUCTION/open-decisions-log.html"><strong>Open decisions log</strong></a><span class="summary">OPEN / IN DISCUSSION / LOCKED—include in sessions when relevant.</span></li>
+  <li><a href="PRODUCTION/story-bible-reference.html">Story bible reference</a><span class="summary">Downloads HTML vs DOCS; conflict policy; LLM hint.</span></li>
+  <li><a href="PRODUCTION/changelog.html">Version changelog</a><span class="summary">Major design decisions and doc migrations.</span></li>
+</ul>
+
+<h2 id="llm-routing">What to load per task (LLM)</h2>
+<div class="llm-box">
+  <h3>Routing</h3>
+  <ul>
+    <li><strong>Story / dialogue:</strong> MASTER → STORY → CHARACTERS (add LORE page from STORY for world-rule checks).</li>
+    <li><strong>Puzzle:</strong> MASTER → PUZZLES → <a href="STORY/lore-world-rules.html">Lore &amp; world rules</a> → relevant LEVEL DESIGN pages.</li>
+    <li><strong>Combat feel:</strong> MASTER → COMBAT → CHARACTERS → TECHNICAL (<a href="TECHNICAL/mechanic-unlock-ladder.html">mechanic unlock ladder</a>).</li>
+    <li><strong>Level / section:</strong> MASTER → LEVEL DESIGN (<code>act-*-horizontal</code> + <a href="LEVEL_DESIGN/four-beat-rhythm.html">four-beat</a>) → STORY → TRAVERSAL.</li>
+    <li><strong>Art / VFX:</strong> MASTER → ART &amp; VISUAL → CHARACTERS → STORY section that motivates the beat.</li>
+    <li><strong>Audio:</strong> MASTER → AUDIO → STORY / CHARACTERS as needed for context.</li>
+    <li><strong>Engineering / tools:</strong> MASTER → TECHNICAL → <a href="_SPRINTS/index.html">SPRINTS</a> → PRODUCTION (open decisions if touching scope).</li>
+  </ul>
+  <p><strong>Full context:</strong> Load <em>MASTER only</em> first. State the task; pull additional pages on demand—do not paste the entire DOCS tree into one prompt unless explicitly requested.</p>
+  <p><strong>Open decisions:</strong> If the task touches an unresolved question (Warden execution, Section 4 puzzle, hologram retention, etc.), load <a href="PRODUCTION/open-decisions-log.html">open-decisions-log.html</a> in the same session.</p>
+</div>
+
+<h2 id="quick-nav">Quick section cards</h2>
+<div class="doc-grid">
+  <div class="doc-card"><h3><a class="section-link" href="STORY/index.html">STORY</a></h3><p>Plot, lore, dialogue, ritual, endings.</p></div>
+  <div class="doc-card"><h3><a class="section-link" href="CHARACTERS/index.html">CHARACTERS</a></h3><p>Protagonists, Uncle, NPCs, enemies.</p></div>
+  <div class="doc-card"><h3><a class="section-link" href="COMBAT/index.html">COMBAT</a></h3><p>Systems, moves, encounters, Budokai.</p></div>
+  <div class="doc-card"><h3><a class="section-link" href="PUZZLES/index.html">PUZZLES</a></h3><p>Philosophy, per-act designs, dependency matrix.</p></div>
+  <div class="doc-card"><h3><a class="section-link" href="LEVEL_DESIGN/index.html">LEVEL DESIGN</a></h3><p>Cadence, sections, rhythm, act traversal.</p></div>
+  <div class="doc-card"><h3><a class="section-link" href="TRAVERSAL/index.html">TRAVERSAL</a></h3><p>Controllers, states, character capabilities.</p></div>
+  <div class="doc-card"><h3><a class="section-link" href="ART_VISUAL/index.html">ART &amp; VISUAL</a></h3><p>Identity, palette, silhouette, VFX, planes.</p></div>
+  <div class="doc-card"><h3><a class="section-link" href="AUDIO/index.html">AUDIO</a></h3><p>Music rules, SFX, ritual sting, dialogue UI.</p></div>
+  <div class="doc-card"><h3><a class="section-link" href="TECHNICAL/index.html">TECHNICAL</a></h3><p>Unity layout, budgets, unlock ladder, markers.</p></div>
+  <div class="doc-card"><h3><a class="section-link" href="PRODUCTION/index.html">PRODUCTION</a></h3><p>TODO, checkpoints, <strong>open decisions</strong>, changelog.</p></div>
+  <div class="doc-card"><h3><a class="section-link" href="_SPRINTS/index.html">SPRINTS</a></h3><p>Sprint&nbsp;0 wiring + Act&nbsp;I backlog.</p></div>
+</div>
+
+</main>
+<footer class="site-footer">
+  <p><a href="MASTER.html">MASTER</a> · A Drop of Time — design documentation</p>
+</footer>
+<script id="adot-doc-nav" data-depth="0" src="nav.js"></script>
+</body>
+</html>

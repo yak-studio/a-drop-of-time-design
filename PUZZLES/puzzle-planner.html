@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Drop of Time — Puzzle Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0e0d0b;
+  --bg2:       #141310;
+  --bg3:       #1c1a16;
+  --border:    #2e2b24;
+  --border2:   #3d3a30;
+  --text:      #d4cfc4;
+  --text2:     #8a8478;
+  --text3:     #4a4840;
+  --accent:    #c87941;
+  --accent2:   #8fb8a8;
+  --mother:    #9b5a7a;
+  --father:    #4a7898;
+  --both:      #7a8a5a;
+  --danger:    #9b4a3a;
+
+  --mech-swap:    #4a7898;
+  --mech-tele:    #7a5a9a;
+  --mech-interact:#6a8a5a;
+  --mech-traverse:#9a7a4a;
+  --mech-observe: #5a8a8a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Crimson Pro', serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+/* grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* ── LAYOUT ── */
+.shell { display: flex; min-height: 100vh; }
+
+aside {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.aside-logo {
+  padding: 1.5rem 1.5rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.aside-logo-title {
+  font-family: 'Crimson Pro', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+.aside-logo-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.aside-section {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  padding: 1.1rem 1.5rem 0.3rem;
+}
+
+.aside-link {
+  display: block;
+  padding: 5px 1.5rem;
+  font-size: 14px;
+  color: var(--text2);
+  text-decoration: none;
+  font-family: 'Crimson Pro', serif;
+  transition: color 0.15s;
+  cursor: pointer;
+}
+
+.aside-link:hover { color: var(--text); }
+
+.aside-new-btn {
+  margin: auto 1.25rem 1.5rem;
+  padding: 0.6rem 1rem;
+  background: var(--accent);
+  color: #1a0e00;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  text-align: center;
+}
+
+.aside-new-btn:hover { opacity: 0.85; }
+
+main {
+  flex: 1;
+  padding: 2.5rem 3rem 6rem;
+  max-width: 980px;
+  min-width: 0;
+}
+
+/* ── HEADER ── */
+.page-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.page-header h1 {
+  font-size: 36px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.page-header p {
+  font-size: 15px;
+  color: var(--text2);
+  margin-top: 0.5rem;
+  max-width: 600px;
+}
+
+/* ── MECHANICS LEGEND ── */
+.mech-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 2.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.mech-legend-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  width: 100%;
+  margin-bottom: 2px;
+}
+
+.mech-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  cursor: default;
+}
+
+/* ── PUZZLE CARDS ── */
+.puzzle-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.puzzle-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.puzzle-card:hover { border-color: var(--border2); }
+
+.puzzle-card-header {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+}
+
+.puzzle-act-stripe {
+  width: 4px;
+  flex-shrink: 0;
+}
+
+.puzzle-card-header-inner {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.puzzle-title-block {}
+
+.puzzle-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.puzzle-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.puzzle-tagline {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text2);
+  margin-top: 3px;
+}
+
+.puzzle-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.difficulty-dots {
+  display: flex;
+  gap: 3px;
+}
+
+.diff-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border2);
+}
+
+.diff-dot.filled { background: var(--accent); }
+
+.act-badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  color: var(--text2);
+}
+
+.puzzle-card-body {
+  padding: 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+}
+
+.puzzle-card-body.full { grid-template-columns: 1fr; }
+
+.pfield-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 5px;
+}
+
+.pfield-content {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+.pfield-content strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.pfield-content em { color: var(--accent); font-style: italic; }
+
+/* mechanic tags inline */
+.mech-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+/* who plays */
+.who-bar {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.who-pip {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+.who-mother { background: rgba(155,90,122,0.2); color: #c47a9a; border: 1px solid rgba(155,90,122,0.4); }
+.who-father { background: rgba(74,120,152,0.2); color: #7aaac8; border: 1px solid rgba(74,120,152,0.4); }
+.who-both   { background: rgba(122,138,90,0.2); color: #aac87a; border: 1px solid rgba(122,138,90,0.4); }
+
+/* payoff bar */
+.payoff-bar {
+  border-top: 1px solid var(--border);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.payoff-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.payoff-text {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--accent2);
+}
+
+/* step list */
+.step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.step-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.step-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--accent);
+  min-width: 18px;
+  padding-top: 3px;
+}
+
+.step-text {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.55;
+}
+
+.step-text strong { color: var(--text); }
+
+/* divider */
+.act-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 2rem 0 1rem;
+}
+
+.act-divider-line { flex: 1; height: 1px; background: var(--border); }
+
+.act-divider-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+/* design principle callout */
+.principle {
+  background: var(--bg3);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 5px 5px 0;
+  padding: 0.75rem 1rem;
+  margin-bottom: 2rem;
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.65;
+}
+
+.principle strong { color: var(--accent); }
+
+/* ── MECH TAG COLOURS ── */
+.m-swap     { background: rgba(74,120,152,0.2); color:#7aaac8; border:1px solid rgba(74,120,152,0.35); }
+.m-tele     { background: rgba(122,90,154,0.2); color:#b07ad8; border:1px solid rgba(122,90,154,0.35); }
+.m-interact { background: rgba(106,138,90,0.2); color:#8ab878; border:1px solid rgba(106,138,90,0.35); }
+.m-traverse { background: rgba(154,122,74,0.2); color:#c8a870; border:1px solid rgba(154,122,74,0.35); }
+.m-observe  { background: rgba(90,138,138,0.2); color:#78b8b8; border:1px solid rgba(90,138,138,0.35); }
+.m-z        { background: rgba(138,90,90,0.2);  color:#c87878; border:1px solid rgba(138,90,90,0.35); }
+
+@media(max-width:800px){
+  aside{display:none;}
+  main{padding:1.5rem 1.25rem 4rem;}
+  .puzzle-card-body{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- SIDEBAR -->
+<aside>
+  <div class="aside-logo">
+    <div class="aside-logo-title">A Drop of Time</div>
+    <div class="aside-logo-sub">Puzzle Designer</div>
+  </div>
+
+  <div class="aside-section">Act I</div>
+  <a class="aside-link" href="#p1">P1 — The Obelisks</a>
+  <a class="aside-link" href="#p2">P2 — The Frozen Gate</a>
+  <a class="aside-link" href="#p3">P3 — The Bridge</a>
+  <a class="aside-link" href="#p4">P4 — The Rune Wall</a>
+  <a class="aside-link" href="#p5">P5 — The Warden's Door</a>
+
+  <div class="aside-section">Act II</div>
+  <a class="aside-link" href="#p6">P6 — The Lever Across</a>
+  <a class="aside-link" href="#p7">P7 — The Counterweight</a>
+  <a class="aside-link" href="#p8">P8 — The Ice Lens</a>
+  <a class="aside-link" href="#p9">P9 — The Twin Locks</a>
+
+  <div class="aside-section">Act III</div>
+  <a class="aside-link" href="#p10">P10 — The Gauntlet</a>
+  <a class="aside-link" href="#p11">P11 — The Summit Gate</a>
+
+  <button class="aside-new-btn" onclick="alert('Coming soon — export puzzle JSON')">Export JSON ↗</button>
+</aside>
+
+<!-- MAIN -->
+<main>
+
+  <div class="page-header">
+    <h1>Puzzle Design</h1>
+    <p>Puzzles act as gates — solve it, earn the reward. Every puzzle teaches or tests one mechanic. Difficulty scales with unlocked abilities. Discovery first, solution second.</p>
+  </div>
+
+  <!-- MECHANIC LEGEND -->
+  <div class="mech-legend">
+    <div class="mech-legend-label">Mechanic key</div>
+    <span class="mech-tag m-swap">TAB SWAP</span>
+    <span class="mech-tag m-tele">TELEKINESIS</span>
+    <span class="mech-tag m-interact">INTERACT</span>
+    <span class="mech-tag m-traverse">TRAVERSE</span>
+    <span class="mech-tag m-observe">OBSERVE</span>
+    <span class="mech-tag m-z">Z-AXIS</span>
+  </div>
+
+  <div class="principle">
+    <strong>Design rule:</strong> Every puzzle must have a moment of <em>discovery</em> before it has a solution. The player should feel the "oh" before they feel the "ah." If they can see the solution from the entrance, the puzzle is too readable. If they can't find a foothold after 60 seconds, it's too opaque. The sweet spot is: <em>one surprising observation unlocks everything.</em>
+  </div>
+
+  <!-- ══ ACT I ══ -->
+  <div class="act-divider">
+    <div class="act-divider-line"></div>
+    <div class="act-divider-label">Act I — The Forest · Abilities: core combat, TAB swap</div>
+    <div class="act-divider-line"></div>
+  </div>
+
+  <div class="puzzle-grid">
+
+    <!-- P1 -->
+    <div class="puzzle-card" id="p1">
+      <div class="puzzle-card-header">
+        <div class="puzzle-act-stripe" style="background:#4a7898"></div>
+        <div class="puzzle-card-header-inner">
+          <div class="puzzle-title-block">
+            <div class="puzzle-number">Act I · Puzzle 01 · Section 2</div>
+            <div class="puzzle-title">The Obelisks</div>
+            <div class="puzzle-tagline">Teaching attack, then teaching the swap</div>
+          </div>
+          <div class="puzzle-meta">
+            <div class="difficulty-dots">
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+            </div>
+            <div class="act-badge">Tutorial</div>
+          </div>
+        </div>
+      </div>
+      <div class="puzzle-card-body">
+        <div>
+          <div class="pfield-label">Setup</div>
+          <div class="pfield-content">Four tall obelisk stones block the path. Each has carved runes on its face — glyphs that glow faintly when struck. The stones are ancient. They were not placed here to stop anyone. They were placed here for something else entirely, and the parents are using them without understanding what they mean.</div>
+        </div>
+        <div>
+          <div class="pfield-label">Discovery moment</div>
+          <div class="pfield-content">First obelisk has <strong>three runes</strong> — player hits it, one lights. Hits it again, two light. Third hit — all three glow, stone slowly <em>sinks into the earth</em>. Clear. Satisfying. Then: the second stone has <strong>no runes at all.</strong> Blank face. The Father stands in front of it. Nothing happens. <em>What?</em> — TAB to Mother. The runes are there on her plane. They only exist for her.</div>
+        </div>
+        <div>
+          <div class="pfield-label">Solution steps</div>
+          <div class="step-list">
+            <div class="step-row"><div class="step-num">01</div><div class="step-text">Hit obelisk 1 three times (Father or Mother — teaches attack chain)</div></div>
+            <div class="step-row"><div class="step-num">02</div><div class="step-text">Obelisk 2 is blank on Father's plane → <strong>swap to Mother</strong> → runes visible → hit three times</div></div>
+            <div class="step-row"><div class="step-num">03</div><div class="step-text">Obelisk 3 has runes on <em>both</em> planes but requires <strong>charge attack</strong> on one rune — teaches the second input</div></div>
+            <div class="step-row"><div class="step-num">04</div><div class="step-text">Obelisk 4 split — Father activates left runes, Mother right runes, requires one swap mid-solve</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="pfield-label">Who plays</div>
+          <div class="who-bar">
+            <span class="who-pip who-both">BOTH — sequential</span>
+          </div>
+          <div class="pfield-label" style="margin-top:10px;">Mechanics</div>
+          <div class="mech-tags">
+            <span class="mech-tag m-interact">INTERACT</span>
+            <span class="mech-tag m-swap">TAB SWAP</span>
+            <span class="mech-tag m-observe">OBSERVE</span>
+          </div>
+        </div>
+      </div>
+      <div class="payoff-bar">
+        <div class="payoff-icon">⬇</div>
+        <div class="payoff-text">All four stones sink. The path ahead opens — and a narrow natural archway is revealed that wasn't visible before. Simple. The world opens. You earned it.</div>
+      </div>
+    </div>
+
+    <!-- P2 -->
+    <div class="puzzle-card" id="p2">
+      <div class="puzzle-card-header">
+        <div class="puzzle-act-stripe" style="background:#4a7898"></div>
+        <div class="puzzle-card-header-inner">
+          <div class="puzzle-title-block">
+            <div class="puzzle-number">Act I · Puzzle 02 · Section 4</div>
+            <div class="puzzle-title">The Frozen Gate</div>
+            <div class="puzzle-tagline">What exists on one plane can move on the other</div>
+          </div>
+          <div class="puzzle-meta">
+            <div class="difficulty-dots">
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+            </div>
+            <div class="act-badge">Act I — Early</div>
+          </div>
+        </div>
+      </div>
+      <div class="puzzle-card-body">
+        <div>
+          <div class="pfield-label">Setup</div>
+          <div class="pfield-content">A glacial waterway — not crossable. On the Father's plane, a heavy stone wheel mechanism sits frozen in ice on the <strong>Z-axis wall</strong> (the background). On the Mother's plane, the same mechanism is free but has no wheel handle — just the socket. The wheel handle only exists on the Father's plane, embedded in ice above reach.</div>
+        </div>
+        <div>
+          <div class="pfield-label">Discovery moment</div>
+          <div class="pfield-content">Player notices the wheel socket on Mother's plane — incomplete. Swaps to Father — there's the handle, but the mechanism is frozen solid and he can't reach it anyway. <em>But the socket on Mother's plane is at a different height.</em> The planes don't share elevation here. What's inaccessible to Father is perfectly reachable to Mother — if only she had the handle.</div>
+        </div>
+        <div>
+          <div class="pfield-label">Solution steps</div>
+          <div class="step-list">
+            <div class="step-row"><div class="step-num">01</div><div class="step-text">Father climbs the Z-axis ice wall to reach the frozen wheel handle (traversal + observe)</div></div>
+            <div class="step-row"><div class="step-num">02</div><div class="step-text">Father breaks ice around the handle by attacking it (the ice shatters — satisfying)</div></div>
+            <div class="step-row"><div class="step-num">03</div><div class="step-text"><strong>Swap to Mother</strong> — the handle now exists on her plane at ground level (plane logic: objects unlocked on one appear available on the other)</div></div>
+            <div class="step-row"><div class="step-num">04</div><div class="step-text">Mother inserts handle into socket, turns the wheel (interact)</div></div>
+            <div class="step-row"><div class="step-num">05</div><div class="step-text">Bridge mechanism activates on both planes simultaneously</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="pfield-label">Who plays</div>
+          <div class="who-bar">
+            <span class="who-pip who-both">BOTH — handoff</span>
+          </div>
+          <div class="pfield-label" style="margin-top:10px;">Mechanics</div>
+          <div class="mech-tags">
+            <span class="mech-tag m-swap">TAB SWAP</span>
+            <span class="mech-tag m-traverse">TRAVERSE</span>
+            <span class="mech-tag m-interact">INTERACT</span>
+            <span class="mech-tag m-z">Z-AXIS</span>
+          </div>
+        </div>
+      </div>
+      <div class="payoff-bar">
+        <div class="payoff-icon">🌉</div>
+        <div class="payoff-text">The bridge doesn't just rise — it <em>erupts</em> from the glacial water. Ice explodes outward. Stone slabs crash upward one by one until a walkable span exists. Both parents see it happen simultaneously. Worth the solve.</div>
+      </div>
+    </div>
+
+    <!-- P3 -->
+    <div class="puzzle-card" id="p3">
+      <div class="puzzle-card-header">
+        <div class="puzzle-act-stripe" style="background:#4a7898"></div>
+        <div class="puzzle-card-header-inner">
+          <div class="puzzle-title-block">
+            <div class="puzzle-number">Act I · Puzzle 03 · Section 5</div>
+            <div class="puzzle-title">The Rune Wall — Dodge &amp; Block</div>
+            <div class="puzzle-tagline">The stones teach you to stop hitting and start listening</div>
+          </div>
+          <div class="puzzle-meta">
+            <div class="difficulty-dots">
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+            </div>
+            <div class="act-badge">Act I — Mid</div>
+          </div>
+        </div>
+      </div>
+      <div class="puzzle-card-body">
+        <div>
+          <div class="pfield-label">Setup</div>
+          <div class="pfield-content">A second set of obelisks — the player expects to hit them like before. But these runes pulse with a faint red light and the stone surface <strong>repels strikes</strong> — attacking them does nothing, or worse, pushes the player back. The stone is protected. Something different is required.</div>
+        </div>
+        <div>
+          <div class="pfield-label">Discovery moment</div>
+          <div class="pfield-content">The runes on these stones show <strong>different glyphs</strong> — not the attack glyph from before. A curved shape (dodge) and a flat line (block). The player either recognises them from the tutorial stones, or experiments. When they dodge near a stone — one rune lights. When they block — another lights. <em>The stones respond to defensive action.</em></div>
+        </div>
+        <div>
+          <div class="pfield-label">Solution steps</div>
+          <div class="step-list">
+            <div class="step-row"><div class="step-num">01</div><div class="step-text">Stone 1: dodge in front of it (directional dodge activates the glyph)</div></div>
+            <div class="step-row"><div class="step-num">02</div><div class="step-text">Stone 2: hold block while adjacent (sustained block fills the rune slowly)</div></div>
+            <div class="step-row"><div class="step-num">03</div><div class="step-text">Stone 3: <strong>parry timing</strong> — a small projectile fires from the stone, perfect block lights all three runes at once (teaches parry window)</div></div>
+            <div class="step-row"><div class="step-num">04</div><div class="step-text">Stone 4: requires swap — Mother dodges her side, Father blocks his, simultaneous</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="pfield-label">Who plays</div>
+          <div class="who-bar">
+            <span class="who-pip who-both">BOTH — final stone</span>
+          </div>
+          <div class="pfield-label" style="margin-top:10px;">Mechanics</div>
+          <div class="mech-tags">
+            <span class="mech-tag m-interact">INTERACT</span>
+            <span class="mech-tag m-swap">TAB SWAP</span>
+            <span class="mech-tag m-observe">OBSERVE</span>
+          </div>
+        </div>
+      </div>
+      <div class="payoff-bar">
+        <div class="payoff-icon">⬇</div>
+        <div class="payoff-text">Stones sink as before — but faster, more confident. The player has earned the same payoff a second time and it still feels good because they understand the system now.</div>
+      </div>
+    </div>
+
+    <!-- P4 -->
+    <div class="puzzle-card" id="p4">
+      <div class="puzzle-card-header">
+        <div class="puzzle-act-stripe" style="background:#4a7898"></div>
+        <div class="puzzle-card-header-inner">
+          <div class="puzzle-title-block">
+            <div class="puzzle-number">Act I · Puzzle 04 · Section 7</div>
+            <div class="puzzle-title">The Ancient Door</div>
+            <div class="puzzle-tagline">Both planes must agree before the world moves</div>
+          </div>
+          <div class="puzzle-meta">
+            <div class="difficulty-dots">
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+            </div>
+            <div class="act-badge">Act I — Late</div>
+          </div>
+        </div>
+      </div>
+      <div class="puzzle-card-body">
+        <div>
+          <div class="pfield-label">Setup</div>
+          <div class="pfield-content">A massive stone door — clearly old, clearly significant. The kind of thing that shouldn't move. On each plane, a large circular dial is set into the wall at Z-depth (the background face). Each dial has symbols. Neither dial does anything on its own. The door remains shut.</div>
+        </div>
+        <div>
+          <div class="pfield-label">Discovery moment</div>
+          <div class="pfield-content">The dials have <strong>overlapping symbols</strong> — some glyphs appear on both planes, some only on one. Rotating one dial causes the other to <em>partially respond</em> — a faint echo, as if the planes feel each other here. The player realises: <strong>both dials must show the same symbol at the same position simultaneously</strong> — but each is only controllable from its own plane. One parent sets their dial, swaps, sets the other, swaps back to confirm the first hasn't shifted.</div>
+        </div>
+        <div>
+          <div class="pfield-label">Solution steps</div>
+          <div class="step-list">
+            <div class="step-row"><div class="step-num">01</div><div class="step-text">Father rotates his dial — faint glow shows which symbol is "alive" on Mother's plane too</div></div>
+            <div class="step-row"><div class="step-num">02</div><div class="step-text">Swap to Mother, rotate her dial to match — but Father's dial has drifted slightly (time-decay mechanic — planes don't hold perfectly)</div></div>
+            <div class="step-row"><div class="step-num">03</div><div class="step-text">Swap back, micro-correct Father's dial — now both are aligned</div></div>
+            <div class="step-row"><div class="step-num">04</div><div class="step-text">Both dials lock simultaneously — a resonance sound — the door begins to move</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="pfield-label">Design note</div>
+          <div class="pfield-content">The <strong>drift mechanic</strong> is the key idea here — the planes don't stay in sync on their own. This is the game's central metaphor made physical: you can't hold onto one without the other slipping. Keep drift subtle — frustrating if too aggressive.</div>
+          <div class="pfield-label" style="margin-top:10px;">Mechanics</div>
+          <div class="mech-tags">
+            <span class="mech-tag m-swap">TAB SWAP</span>
+            <span class="mech-tag m-interact">INTERACT</span>
+            <span class="mech-tag m-z">Z-AXIS</span>
+            <span class="mech-tag m-observe">OBSERVE</span>
+          </div>
+        </div>
+      </div>
+      <div class="payoff-bar">
+        <div class="payoff-icon">🚪</div>
+        <div class="payoff-text">The door doesn't open — it <em>falls inward</em>, slow and massive, raising dust on both planes at once. The scale of it is the payoff. Something ancient just moved because two people forced their broken worlds to agree.</div>
+      </div>
+    </div>
+
+    <!-- P5 -->
+    <div class="puzzle-card" id="p5">
+      <div class="puzzle-card-header">
+        <div class="puzzle-act-stripe" style="background:#4a7898"></div>
+        <div class="puzzle-card-header-inner">
+          <div class="puzzle-title-block">
+            <div class="puzzle-number">Act I · Puzzle 05 · Section 9</div>
+            <div class="puzzle-title">The Warden's Threshold</div>
+            <div class="puzzle-tagline">A puzzle that is also a tone shift</div>
+          </div>
+          <div class="puzzle-meta">
+            <div class="difficulty-dots">
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+            </div>
+            <div class="act-badge">Act I — Pre-Warden</div>
+          </div>
+        </div>
+      </div>
+      <div class="puzzle-card-body">
+        <div>
+          <div class="pfield-label">Setup</div>
+          <div class="pfield-content">A narrow, low passage into the Warden's space — the bottleneck before the confrontation. The passage is blocked by a heavy iron portcullis. There is no mechanism visible. No lever, no wheel, no dial. Just the gate. And silence.</div>
+        </div>
+        <div>
+          <div class="pfield-label">Discovery moment</div>
+          <div class="pfield-content">The gate exists on <strong>only one plane</strong>. On the other plane — the passage is open. But it's a crawl space on that plane, too low to walk through upright. The solution is: one parent goes through the open passage (crawling), emerges on the other side, and pulls a counterweight that raises the portcullis on the other plane. <em>Except — there is no counterweight.</em> The parent who went through has to <strong>hold a pressure plate</strong> with their body weight while the other walks through. Letting go closes the gate. You can only both be through if you time it.</div>
+        </div>
+        <div>
+          <div class="pfield-label">Solution steps</div>
+          <div class="step-list">
+            <div class="step-row"><div class="step-num">01</div><div class="step-text">Observe — gate on Father's plane, crawl passage open on Mother's</div></div>
+            <div class="step-row"><div class="step-num">02</div><div class="step-text">Mother crawls through (traversal — bottleneck compression, audio muffles)</div></div>
+            <div class="step-row"><div class="step-num">03</div><div class="step-text">Mother on other side finds pressure plate — steps on it, gate raises on Father's plane</div></div>
+            <div class="step-row"><div class="step-num">04</div><div class="step-text">Swap to Father, walk through the now-open gate quickly</div></div>
+            <div class="step-row"><div class="step-num">05</div><div class="step-text">Both through — gate drops behind. No going back.</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="pfield-label">Tonal purpose</div>
+          <div class="pfield-content">This puzzle is deliberately simple. The Warden scene needs to land with full weight — don't tax the player cognitively before the most important dialogue in Act I. The puzzle's purpose is the <em>bottleneck feeling</em> and the <em>no going back</em> moment when the gate drops.</div>
+          <div class="pfield-label" style="margin-top:10px;">Mechanics</div>
+          <div class="mech-tags">
+            <span class="mech-tag m-swap">TAB SWAP</span>
+            <span class="mech-tag m-traverse">TRAVERSE</span>
+            <span class="mech-tag m-interact">INTERACT</span>
+          </div>
+        </div>
+      </div>
+      <div class="payoff-bar">
+        <div class="payoff-icon">🔒</div>
+        <div class="payoff-text">The gate drops behind them with a final clang. No puzzle music. No fanfare. Just the sound of a door closing and the Warden's space opening ahead. The silence after is the payoff.</div>
+      </div>
+    </div>
+
+    <!-- ══ ACT II ══ -->
+    <div class="act-divider">
+      <div class="act-divider-line"></div>
+      <div class="act-divider-label">Act II — The Moraine · New: Telekinesis (item), Self-Teleport</div>
+      <div class="act-divider-line"></div>
+    </div>
+
+    <!-- P6 -->
+    <div class="puzzle-card" id="p6">
+      <div class="puzzle-card-header">
+        <div class="puzzle-act-stripe" style="background:#7a5a9a"></div>
+        <div class="puzzle-card-header-inner">
+          <div class="puzzle-title-block">
+            <div class="puzzle-number">Act II · Puzzle 06 · Early</div>
+            <div class="puzzle-title">The Lever Across</div>
+            <div class="puzzle-tagline">Teaching telekinesis — the broken world as tool</div>
+          </div>
+          <div class="puzzle-meta">
+            <div class="difficulty-dots">
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+            </div>
+            <div class="act-badge">Act II — Intro</div>
+          </div>
+        </div>
+      </div>
+      <div class="puzzle-card-body">
+        <div>
+          <div class="pfield-label">Setup</div>
+          <div class="pfield-content">A locked gate. The lever to open it sits in plain sight — on the other plane. You can see it through the fracture shimmer. It's right there. Completely unreachable by walking. A deliberate tease: the game is showing you the problem and the solution at the same time, and asking you to figure out the verb.</div>
+        </div>
+        <div>
+          <div class="pfield-label">Discovery moment</div>
+          <div class="pfield-content">The player tries to swap planes to reach the lever — but the gate is also on that plane, and it's locked too. Both planes, locked. Then — the player looks at the lever with the new telekinesis ability and <em>reaches across</em>. The lever disappears from the other plane and materialises here. <strong>The fracture is a delivery system.</strong> This is the moment the mechanic clicks.</div>
+        </div>
+        <div>
+          <div class="pfield-label">Solution steps</div>
+          <div class="step-list">
+            <div class="step-row"><div class="step-num">01</div><div class="step-text">See the lever on the other plane — can't reach by walking</div></div>
+            <div class="step-row"><div class="step-num">02</div><div class="step-text">Use telekinesis to pull lever across the plane boundary (first real use)</div></div>
+            <div class="step-row"><div class="step-num">03</div><div class="step-text">Lever appears on active plane — insert into socket, pull (interact)</div></div>
+            <div class="step-row"><div class="step-num">04</div><div class="step-text">Gate opens on both planes</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="pfield-label">Who plays</div>
+          <div class="who-bar"><span class="who-pip who-father">FATHER (intro)</span></div>
+          <div class="pfield-label" style="margin-top:10px;">Mechanics</div>
+          <div class="mech-tags">
+            <span class="mech-tag m-tele">TELEKINESIS</span>
+            <span class="mech-tag m-interact">INTERACT</span>
+            <span class="mech-tag m-observe">OBSERVE</span>
+          </div>
+        </div>
+      </div>
+      <div class="payoff-bar">
+        <div class="payoff-icon">🚪</div>
+        <div class="payoff-text">Gate opens. Simple. But the player just learned that the boundary between planes is not just an obstacle — it's a channel. That realisation is the real payoff.</div>
+      </div>
+    </div>
+
+    <!-- P7 -->
+    <div class="puzzle-card" id="p7">
+      <div class="puzzle-card-header">
+        <div class="puzzle-act-stripe" style="background:#7a5a9a"></div>
+        <div class="puzzle-card-header-inner">
+          <div class="puzzle-title-block">
+            <div class="puzzle-number">Act II · Puzzle 07 · Mid</div>
+            <div class="puzzle-title">The Counterweight</div>
+            <div class="puzzle-tagline">Weight on one plane, consequence on the other</div>
+          </div>
+          <div class="puzzle-meta">
+            <div class="difficulty-dots">
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+            </div>
+            <div class="act-badge">Act II — Mid</div>
+          </div>
+        </div>
+      </div>
+      <div class="puzzle-card-body">
+        <div>
+          <div class="pfield-label">Setup</div>
+          <div class="pfield-content">A rope-and-pulley bridge spans a crevasse — but it's stuck. The counterweight on one plane is missing, replaced by an empty hook. On the other plane, a large ice block sits nearby — too heavy to carry, too far from the hook to place manually. The bridge sags uselessly.</div>
+        </div>
+        <div>
+          <div class="pfield-label">Discovery moment</div>
+          <div class="pfield-content">The ice block is on the wrong plane AND at the wrong position. Telekinesis can move it — but it can't cross the plane gap AND cover the lateral distance at the same time. Unless: one parent self-teleports to the far side of the block, <strong>telekineses it from that new angle</strong>, landing it precisely on the hook on the other plane. Position matters. The solution is <em>getting to the right vantage point first.</em></div>
+        </div>
+        <div>
+          <div class="pfield-label">Solution steps</div>
+          <div class="step-list">
+            <div class="step-row"><div class="step-num">01</div><div class="step-text">Observe — ice block present but wrong plane, wrong position</div></div>
+            <div class="step-row"><div class="step-num">02</div><div class="step-text">Self-teleport to elevated position behind the ice block (positioning puzzle)</div></div>
+            <div class="step-row"><div class="step-num">03</div><div class="step-text">Telekinesis from new angle — arc carries ice block across plane boundary onto the hook</div></div>
+            <div class="step-row"><div class="step-num">04</div><div class="step-text">Weight on hook — bridge rises and locks</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="pfield-label">Who plays</div>
+          <div class="who-bar"><span class="who-pip who-mother">MOTHER</span></div>
+          <div class="pfield-label" style="margin-top:10px;">Mechanics</div>
+          <div class="mech-tags">
+            <span class="mech-tag m-tele">TELEKINESIS</span>
+            <span class="mech-tag m-traverse">SELF-TELEPORT</span>
+            <span class="mech-tag m-observe">OBSERVE</span>
+          </div>
+        </div>
+      </div>
+      <div class="payoff-bar">
+        <div class="payoff-icon">🌉</div>
+        <div class="payoff-text">The rope snaps taut, the bridge swings up and locks into the cliff face. Solid. Walkable. Worth the positioning work to get there.</div>
+      </div>
+    </div>
+
+    <!-- P8 -->
+    <div class="puzzle-card" id="p8">
+      <div class="puzzle-card-header">
+        <div class="puzzle-act-stripe" style="background:#7a5a9a"></div>
+        <div class="puzzle-card-header-inner">
+          <div class="puzzle-title-block">
+            <div class="puzzle-number">Act II · Puzzle 08 · Late</div>
+            <div class="puzzle-title">The Ice Lens</div>
+            <div class="puzzle-tagline">Light that only exists on one plane can thaw a door on both</div>
+          </div>
+          <div class="puzzle-meta">
+            <div class="difficulty-dots">
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot"></div>
+            </div>
+            <div class="act-badge">Act II — Late</div>
+          </div>
+        </div>
+      </div>
+      <div class="puzzle-card-body">
+        <div>
+          <div class="pfield-label">Setup</div>
+          <div class="pfield-content">A thick wall of glacial ice seals the path. A single shaft of sunlight enters from above — but only on one plane. On that plane, a large curved ice lens sits on a ledge at Z-depth, angled wrong. Aimed correctly, the focused light would melt the seal. On the other plane — darkness. No light, no lens, just the ice wall.</div>
+        </div>
+        <div>
+          <div class="pfield-label">Discovery moment</div>
+          <div class="pfield-content">The player on the light-plane realises the lens needs to rotate — but it's on a high ledge and self-teleport only covers short range. Swapping to the other parent (dark plane) — they can see through the ice wall. The ice is translucent from the dark side, and the <strong>position of the focused beam is visible as a glow through the ice</strong>. The dark-plane parent can see <em>where the beam is hitting</em> but the light-plane parent can't see the target. They have to navigate together: light-plane moves the lens, dark-plane reads the result. <em>One parent sees the tool. The other sees the effect.</em></div>
+        </div>
+        <div>
+          <div class="pfield-label">Solution steps</div>
+          <div class="step-list">
+            <div class="step-row"><div class="step-num">01</div><div class="step-text">Light-plane: telekinesis the lens from its ledge, hold it in the beam</div></div>
+            <div class="step-row"><div class="step-num">02</div><div class="step-text">Dark-plane: observe glow through the ice — the glow moves as lens moves. Guide it toward the seal.</div></div>
+            <div class="step-row"><div class="step-num">03</div><div class="step-text">Swap between parents to triangulate — one moves, other confirms position</div></div>
+            <div class="step-row"><div class="step-num">04</div><div class="step-text">Focused beam hits the seal — ice cracks, melts, fractures dramatically</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="pfield-label">Design note</div>
+          <div class="pfield-content">This is the most emotionally resonant puzzle in Act II — <em>one parent sees what the other can't.</em> It's the marriage mechanic expressed as a puzzle. Build the "guidance" feeling carefully — it should feel like communication, not like guesswork.</div>
+          <div class="pfield-label" style="margin-top:10px;">Mechanics</div>
+          <div class="mech-tags">
+            <span class="mech-tag m-tele">TELEKINESIS</span>
+            <span class="mech-tag m-swap">TAB SWAP</span>
+            <span class="mech-tag m-observe">OBSERVE</span>
+            <span class="mech-tag m-z">Z-AXIS</span>
+          </div>
+        </div>
+      </div>
+      <div class="payoff-bar">
+        <div class="payoff-icon">❄</div>
+        <div class="payoff-text">The ice seal explodes outward in a cascade of light and water. Steam fills both planes for a moment. When it clears — the upper basin is visible for the first time. The summit is real. It's reachable.</div>
+      </div>
+    </div>
+
+    <!-- P9 -->
+    <div class="puzzle-card" id="p9">
+      <div class="puzzle-card-header">
+        <div class="puzzle-act-stripe" style="background:#7a5a9a"></div>
+        <div class="puzzle-card-header-inner">
+          <div class="puzzle-title-block">
+            <div class="puzzle-number">Act II · Puzzle 09 · Graduation</div>
+            <div class="puzzle-title">The Twin Locks</div>
+            <div class="puzzle-tagline">Every verb. Both parents. One solution.</div>
+          </div>
+          <div class="puzzle-meta">
+            <div class="difficulty-dots">
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+            </div>
+            <div class="act-badge">Act II — Graduation</div>
+          </div>
+        </div>
+      </div>
+      <div class="puzzle-card-body full">
+        <div>
+          <div class="pfield-label">Setup</div>
+          <div class="pfield-content">The upper ridgeline is sealed by two enormous lock mechanisms — one per plane. Each lock has three components: a <strong>key stone</strong> (exists on the wrong plane), a <strong>dial</strong> (requires precise positioning from a ledge only reachable by self-teleport), and a <strong>pressure plate</strong> (requires sustained weight — so a telekinesis-held object, not a person). No single parent can solve their lock alone.</div>
+        </div>
+        <div style="margin-top:1rem;">
+          <div class="pfield-label">Solution overview</div>
+          <div class="step-list">
+            <div class="step-row"><div class="step-num">01</div><div class="step-text">Father: telekinesis his key stone from Mother's plane across to his lock socket</div></div>
+            <div class="step-row"><div class="step-num">02</div><div class="step-text">Mother: self-teleport to elevated dial ledge, rotate dial to correct position</div></div>
+            <div class="step-row"><div class="step-num">03</div><div class="step-text">Father: telekinesis a loose boulder onto Mother's pressure plate (she's busy on the ledge) — holding it requires sustained concentration, locks Father in place</div></div>
+            <div class="step-row"><div class="step-num">04</div><div class="step-text">Mother: while Father holds the boulder — she sets her dial, self-teleports back down, pulls her lock handle</div></div>
+            <div class="step-row"><div class="step-num">05</div><div class="step-text">Father: releases boulder (plate depresses, triggers final mechanism), pulls his lock handle simultaneously</div></div>
+            <div class="step-row"><div class="step-num">06</div><div class="step-text">Both locks disengage — the ridgeline barrier falls</div></div>
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <div class="pfield-label">Mechanics</div>
+          <div class="mech-tags">
+            <span class="mech-tag m-tele">TELEKINESIS</span>
+            <span class="mech-tag m-swap">TAB SWAP</span>
+            <span class="mech-tag m-traverse">SELF-TELEPORT</span>
+            <span class="mech-tag m-interact">INTERACT</span>
+            <span class="mech-tag m-observe">OBSERVE</span>
+          </div>
+        </div>
+      </div>
+      <div class="payoff-bar">
+        <div class="payoff-icon">⛰</div>
+        <div class="payoff-text">The ridgeline barrier — a wall of stone that felt permanent — collapses in sections, each piece crashing down in sequence. The upper basin and the summit beyond are completely exposed. The parents stand at the threshold of the last climb. Everything after this is Act III.</div>
+      </div>
+    </div>
+
+    <!-- ══ ACT III ══ -->
+    <div class="act-divider">
+      <div class="act-divider-line"></div>
+      <div class="act-divider-label">Act III — The Death Zone · All abilities · No new verbs</div>
+      <div class="act-divider-line"></div>
+    </div>
+
+    <!-- P10 -->
+    <div class="puzzle-card" id="p10">
+      <div class="puzzle-card-header">
+        <div class="puzzle-act-stripe" style="background:#9b4a3a"></div>
+        <div class="puzzle-card-header-inner">
+          <div class="puzzle-title-block">
+            <div class="puzzle-number">Act III · Puzzle 10 · The Gauntlet</div>
+            <div class="puzzle-title">The Three Seals</div>
+            <div class="puzzle-tagline">Mastery test — no hand-holding, no time to think</div>
+          </div>
+          <div class="puzzle-meta">
+            <div class="difficulty-dots">
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot filled"></div>
+            </div>
+            <div class="act-badge">Act III — Gauntlet</div>
+          </div>
+        </div>
+      </div>
+      <div class="puzzle-card-body full">
+        <div>
+          <div class="pfield-label">Setup</div>
+          <div class="pfield-content">Three linked seals guard the path to the upper basin. They must be solved in sequence — but each solution destabilises something in the next. There is no pause between them. The mountain is actively hostile here. Wind buffets. Footing is poor. The puzzles themselves are not harder than before — but the <em>conditions</em> are.</div>
+        </div>
+        <div style="margin-top:1rem;">
+          <div class="pfield-label">Seal 1 — Familiar but pressured</div>
+          <div class="pfield-content">A dial puzzle (like Act I's Ancient Door) — but the drift is faster. The cold is affecting the mechanism. Solve it quickly or restart. The skill is there. The patience is tested.</div>
+        </div>
+        <div style="margin-top:0.75rem;">
+          <div class="pfield-label">Seal 2 — Spatial inversion</div>
+          <div class="pfield-content">A telekinesis puzzle where solving Seal 1 has shifted something — an object that was in one position is now in another. The player must re-read the space. Nothing is wrong. It just changed. Adapt.</div>
+        </div>
+        <div style="margin-top:0.75rem;">
+          <div class="pfield-label">Seal 3 — Both parents, no guidance</div>
+          <div class="pfield-content">Final seal requires simultaneous action from both parents — but there's no preamble, no hint. The player applies everything they know. If they've been paying attention since Act I, this is satisfying. If they haven't — they figure it out. Either way, no new information is given.</div>
+        </div>
+        <div style="margin-top:1rem;">
+          <div class="pfield-label">Mechanics</div>
+          <div class="mech-tags">
+            <span class="mech-tag m-tele">TELEKINESIS</span>
+            <span class="mech-tag m-swap">TAB SWAP</span>
+            <span class="mech-tag m-traverse">SELF-TELEPORT</span>
+            <span class="mech-tag m-interact">INTERACT</span>
+            <span class="mech-tag m-z">Z-AXIS</span>
+          </div>
+        </div>
+      </div>
+      <div class="payoff-bar">
+        <div class="payoff-icon">🌬</div>
+        <div class="payoff-text">The seals break. Not dramatically — quietly. Three cracks, three releases of pressure. The wind drops for exactly two seconds. Then resumes. The mountain acknowledged them. That's all.</div>
+      </div>
+    </div>
+
+    <!-- P11 -->
+    <div class="puzzle-card" id="p11">
+      <div class="puzzle-card-header">
+        <div class="puzzle-act-stripe" style="background:#9b4a3a"></div>
+        <div class="puzzle-card-header-inner">
+          <div class="puzzle-title-block">
+            <div class="puzzle-number">Act III · Puzzle 11 · The Summit</div>
+            <div class="puzzle-title">The Convergence Gate</div>
+            <div class="puzzle-tagline">Not a puzzle. A choice dressed as one.</div>
+          </div>
+          <div class="puzzle-meta">
+            <div class="difficulty-dots">
+              <div class="diff-dot filled"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+            </div>
+            <div class="act-badge">Act III — Summit</div>
+          </div>
+        </div>
+      </div>
+      <div class="puzzle-card-body">
+        <div>
+          <div class="pfield-label">Setup</div>
+          <div class="pfield-content">The Convergence. TAB now cycles three planes for the first time — Mother, Father, Daughter. The exit gate is open. One person can walk through. Whoever does, their plane collapses. The "puzzle" is: in what order do you go?</div>
+        </div>
+        <div>
+          <div class="pfield-label">The mechanic</div>
+          <div class="pfield-content">There is nothing to solve. No lever, no dial, no stone. Just the gate. Just TAB. Just the choice of who walks through first. The player has all the information they need. The Companion has explained the cost. The Uncle has offered his plane or not. <strong>The puzzle is the decision.</strong> Every other puzzle in the game was preparation for having the skill to make it. This one requires something else.</div>
+        </div>
+        <div>
+          <div class="pfield-label">Why difficulty is 1/5</div>
+          <div class="pfield-content">Because it's not hard to understand. It's hard to do. Those are different things. The game has earned the right to ask for the second kind.</div>
+          <div class="pfield-label" style="margin-top:10px;">Mechanics</div>
+          <div class="mech-tags">
+            <span class="mech-tag m-swap">TAB — 3 planes</span>
+            <span class="mech-tag m-observe">OBSERVE</span>
+          </div>
+        </div>
+      </div>
+      <div class="payoff-bar">
+        <div class="payoff-icon">∅</div>
+        <div class="payoff-text">No fanfare. No animation. You walk through. The plane collapses behind you. That's the payoff. You made a choice and the world honoured it.</div>
+      </div>
+    </div>
+
+  </div><!-- end puzzle grid -->
+
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sprint 0 — execution | A Drop of Time</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <p class="crumbs"><a href="../MASTER.html">MASTER</a> / <a href="index.html">Sprints</a> / Sprint 0</p>
+  <h1>Sprint 0 — execution (Sprint&nbsp;1)</h1>
+  <p class="lead">Merged from legacy <code>TODO-SPRINT1-MANUAL-CHECKLIST</code> and Act&nbsp;I “Sprint&nbsp;1” block. Goal: both parents traverse, TAB swap, instrumentation. Win: walk S1→S9, swap works, markers + perf overlay honest.</p>
+</header>
+
+<main id="main" class="content">
+
+<div class="callout">
+  <strong>Scope reminder (Act&nbsp;I):</strong> 530 units, 9 sections. Both parents A→B. TAB swap works—that’s the slice. Deeper content lives in <a href="backlog.html">backlog.html</a>.
+</div>
+
+<p class="tier-legend">
+  <span>🔴 BLOCKER</span>
+  <span>🟡 MVP</span>
+  <span>🟢 CORE</span>
+  <span>⚪ POLISH</span>
+</p>
+
+<h2 id="decisions">Lock these (blockers)</h2>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🔴 Lock controller architecture (code-driven + root motion for scripted moments) — log in <a href="../PRODUCTION/open-decisions-log.html">open decisions</a> until locked.</label></li>
+  <li><label><input type="checkbox"> 🔴 Lock plane spatial layout (overlapping space + render layers vs offset) — same.</label></li>
+</ul>
+
+<h2 id="scene">1) Scene hierarchy &amp; layers</h2>
+<ul class="checklist">
+  <li><label><input type="checkbox" checked> Create/verify roots: <code>CorePlaneRoot</code>, <code>MotherPlaneRoot</code>, <code>FatherPlaneRoot</code>.</label></li>
+  <li><label><input type="checkbox" checked> Shared objects in <code>CorePlaneRoot</code>.</label></li>
+  <li><label><input type="checkbox" checked> Mother-only in <code>MotherPlaneRoot</code>; Father-only in <code>FatherPlaneRoot</code>.</label></li>
+  <li><label><input type="checkbox" checked> Scripts on relevant roots (names organizational).</label></li>
+  <li><label><input type="checkbox" checked> Tags: both capsules <code>Player</code> (section/debug triggers).</label></li>
+  <li><label><input type="checkbox"> Optional layers: <code>Core</code>, <code>MotherPlane</code>, <code>FatherPlane</code>, <code>MotherActor</code>, <code>FatherActor</code>.</label></li>
+  <li><label><input type="checkbox"> Optional collision matrix: block MotherActor↔FatherPlane and FatherActor↔MotherPlane if cross-plane collisions break flow.</label></li>
+  <li><label><input type="checkbox"> Optional camera culling: show only needed layers when a parent is active.</label></li>
+</ul>
+
+<h2 id="markers">1.5) Graybox section mapping</h2>
+<ul class="checklist">
+  <li><label><input type="checkbox"> Per section entrance: empty + <code>ADOTSectionMarker</code> + <code>ADOTSectionRegistry</code>.</label></li>
+  <li><label><input type="checkbox"> Trigger collider sized to doorway width.</label></li>
+  <li><label><input type="checkbox"> Fill <code>sectionNumber</code> (1–9), <code>sectionTitle</code>, <code>narrativePurpose</code>, event flags, <code>implementationStatus</code>, <code>openDecisions</code>.</label></li>
+  <li><label><input type="checkbox"> <strong>Tools → ADOT → Graybox Overview</strong> — all markers visible.</label></li>
+  <li><label><input type="checkbox"> <strong>Tools → ADOT → Export Section Map</strong> — JSON exports (sync with <code>Assets/section-data/</code>).</label></li>
+  <li><label><input type="checkbox"> 🔴 Minimum smoke: <strong>S1 entrance</strong> + <strong>S9 exit</strong> markers; prefer all entrances.</label></li>
+</ul>
+
+<h2 id="avatars">2) Parent avatars (baseline)</h2>
+<ul class="checklist">
+  <li><label><input type="checkbox" checked> <code>CharacterController</code> on Mother + Father roots.</label></li>
+  <li><label><input type="checkbox" checked> <code>ADOTParentAvatar</code> on both; <code>plane</code>, <code>cameraTarget</code>, <code>controlBehaviours</code> wired.</label></li>
+</ul>
+
+<h2 id="thirdperson">2.1) Robot Kyle + <code>ADOTThirdPersonMinimal</code></h2>
+<p class="lead" style="margin-top:0">Replaces <code>ADOTSimpleCapsuleMover</code> where adopted.</p>
+<ul class="checklist">
+  <li><label><input type="checkbox"> Disable/remove <code>StarterAssets.ThirdPersonController</code>, <code>StarterAssetsInputs</code>, <code>PlayerInput</code> if present; add <code>ADOTThirdPersonMinimal</code>.</label></li>
+  <li><label><input type="checkbox"> <code>ADOTParentAvatar.controlBehaviours</code> references <code>ADOTThirdPersonMinimal</code> (not capsule mover).</label></li>
+  <li><label><input type="checkbox"> Walk axis matches level forward (<code>WorldZ</code> vs <code>WorldX</code> / neg variants).</label></li>
+  <li><label><input type="checkbox"> Walk: W/S (or vertical arrows) only — A/D does not move (graybox single axis).</label></li>
+  <li><label><input type="checkbox"> Jump = <strong>F</strong>; Sprint = Left Shift; debug climb = hold Space (toggle <code>enableDebugVertical</code> if unwanted).</label></li>
+  <li><label><input type="checkbox"> Cinemachine: assign follow/look pivot to <code>cinemachineCameraTarget</code>.</label></li>
+  <li><label><input type="checkbox"> 🔴 Mother: walk, stop, gravity, ground probe — tune on <strong>non-flat</strong> strip (Sprint&nbsp;2 wedges when ready).</label></li>
+  <li><label><input type="checkbox"> 🔴 Father: same inputs, heavier inertia; test on overlapping-plane layout.</label></li>
+  <li><label><input type="checkbox"> Optional: remove stub <code>ThirdPersonController.cs</code> / graybox <code>StarterAssetsInputs</code> when unused.</label></li>
+</ul>
+
+<h2 id="planeswap">3) Plane swap manager</h2>
+<ul class="checklist">
+  <li><label><input type="checkbox" checked> Object with <code>ADOTPlaneSwapManager</code>; mother/father refs; <code>startingPlane</code>.</label></li>
+  <li><label><input type="checkbox" checked> <code>mirrorInactiveParentTransform</code> on for Sprint&nbsp;1.</label></li>
+  <li><label><input type="checkbox" checked> <code>swapVisuals</code> per need (single plane vs debug both visible).</label></li>
+  <li><label><input type="checkbox"> 🔴 TAB swaps control Mother ↔ Father.</label></li>
+  <li><label><input type="checkbox"> 🔴 Inactive parent: frozen / not simulated per spec.</label></li>
+</ul>
+
+<h2 id="debug">4) Debugging integration</h2>
+<ul class="checklist">
+  <li><label><input type="checkbox"> <code>ADOTPlaneSwitchNotifier</code> on manager (or linked); assigned on <code>ADOTPlaneSwapManager</code>.</label></li>
+  <li><label><input type="checkbox"> Play: TAB → overlay active plane Mother/Father.</label></li>
+  <li><label><input type="checkbox"> 🔴 <code>[ADOT_PerfMonitor]</code> in scene; F1 toggles overlay.</label></li>
+  <li><label><input type="checkbox"> 🔴 From swap logic call <code>NotifySwap("Mother"|"Father")</code> — confirm on overlay.</label></li>
+</ul>
+
+<h2 id="camera">5) Camera follow</h2>
+<ul class="checklist">
+  <li><label><input type="checkbox" checked> Camera script supports <code>SetTarget(Transform)</code>; assigned on manager.</label></li>
+  <li><label><input type="checkbox"> Verify TAB switches target with no camera loss.</label></li>
+  <li><label><input type="checkbox" checked> Hard cut vs short blend decided and wired.</label></li>
+  <li><label><input type="checkbox"> 🟡 Camera follows over elevation; no clipping through upcoming Sprint&nbsp;2 geometry.</label></li>
+  <li><label><input type="checkbox"> 🟡 Cross-plane audio filter placeholder on inactive plane.</label></li>
+</ul>
+
+<h2 id="smoke">6) Section tracking smoke</h2>
+<ul class="checklist">
+  <li><label><input type="checkbox"> Capsules tagged <code>Player</code>.</label></li>
+  <li><label><input type="checkbox"> Section overlay label updates while walking.</label></li>
+</ul>
+
+<h2 id="traversal">7) Traversal smoke (Sprint&nbsp;1)</h2>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🔴 Walk Section&nbsp;1 → Section&nbsp;9 without hard blockers.</label></li>
+  <li><label><input type="checkbox"> 🔴 Two parents on different surface objects same world space — no fall-through / wrong-plane collision.</label></li>
+  <li><label><input type="checkbox"> TAB repeatedly at stairs/slopes/drop edges.</label></li>
+  <li><label><input type="checkbox"> Inactive parent mirrors position; note issues in <a href="../PRODUCTION/open-decisions-log.html">open decisions</a> / backlog.</label></li>
+</ul>
+
+<h2 id="validation">8) Validation run &amp; wrap</h2>
+<ul class="checklist">
+  <li><label><input type="checkbox"> Walk S1→S9 as Mother; repeat swap stress.</label></li>
+  <li><label><input type="checkbox"> No collider cross-talk blocking progression.</label></li>
+  <li><label><input type="checkbox"> After first good run: mark Sprint&nbsp;1 done in tracking; note compromises (mirror transform, simple visual swap).</label></li>
+  <li><label><input type="checkbox"> Ticket follow-up: independent inactive-parent simulation (later sprint).</label></li>
+</ul>
+
+<p><a href="backlog.html">→ Full backlog, open decisions, Sprints 2–6, Act&nbsp;I definition of done</a></p>
+
+</main>
+<footer class="site-footer"><a href="index.html">← Sprints</a> · <a href="../MASTER.html">MASTER</a></footer>
+<script id="adot-doc-nav" data-depth="1" src="../nav.js"></script>
+</body>
+</html>

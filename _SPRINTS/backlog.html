@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backlog — Act I | A Drop of Time</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <p class="crumbs"><a href="../MASTER.html">MASTER</a> / <a href="index.html">Sprints</a> / Backlog</p>
+  <h1>Backlog — Act&nbsp;I</h1>
+  <p class="lead">Migrated from legacy Act&nbsp;I grayboxing TODO. <strong>Current execution:</strong> <a href="sprint-0.html">sprint-0.html</a>. This page holds tooling reference, open decisions, Sprints&nbsp;2–6, per-section work, and definition of done.</p>
+</header>
+
+<main id="main" class="content">
+
+<h2 id="tiers">Priority tiers</h2>
+<ul>
+  <li>🔴 <strong>BLOCKER</strong> — Can’t move forward without this</li>
+  <li>🟡 <strong>MVP</strong> — First playable loop</li>
+  <li>🟢 <strong>CORE</strong> — Full Act&nbsp;I experience</li>
+  <li>⚪ <strong>POLISH</strong> — After core is solid</li>
+</ul>
+
+<h2 id="tool-graybox">Tooling — Graybox (<code>Assets/Grayboxing/Scripts</code>)</h2>
+<p>See <code>README2.md</code> in that folder for full setup.</p>
+<table class="data">
+  <thead><tr><th>Script</th><th>Role</th></tr></thead>
+  <tbody>
+    <tr><td><code>ADOTSectionMarker</code></td><td>Per section: number, title, narrative purpose, flags, status, open decisions; gizmos + Overview.</td></tr>
+    <tr><td><code>ADOTSectionRegistry</code></td><td>With Marker; trigger → perf overlay section string. Needs <strong>Player</strong> tag.</td></tr>
+    <tr><td><code>ADOTSectionMarkerEditor</code></td><td>Custom inspector / per-section export.</td></tr>
+    <tr><td><code>ADOTSectionExporter</code></td><td><strong>Tools → ADOT → Export Section Map</strong> → JSON.</td></tr>
+    <tr><td><code>ADOTGrayboxWindow</code></td><td><strong>Tools → ADOT → Graybox Overview</strong> — strip, colours, jump, export.</td></tr>
+  </tbody>
+</table>
+<h3>Habits</h3>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🔴 Entrance per section: Marker + Registry, trigger width, players tagged Player.</label></li>
+  <li><label><input type="checkbox"> 🟡 After geometry passes: resize triggers; update <code>sectionWidth</code> / <code>elevationDelta</code>.</label></li>
+  <li><label><input type="checkbox"> 🟡 End of sprint: Export Section Map + commit JSON.</label></li>
+  <li><label><input type="checkbox"> 🟢 Set flags so Overview pips match act doc; paste notes into markers.</label></li>
+</ul>
+
+<h2 id="tool-debug">Tooling — Debugging (<code>Assets/Debugging</code>)</h2>
+<p>See <code>README.md</code> in that folder.</p>
+<table class="data">
+  <thead><tr><th>Script</th><th>Role</th></tr></thead>
+  <tbody>
+    <tr><td><code>ADOTPerformanceMonitor</code></td><td>FPS, memory, GC, section, plane; F1 overlay.</td></tr>
+    <tr><td><code>ADOTSectionTrigger</code></td><td>Alt to Registry: trigger + string → SetSection.</td></tr>
+    <tr><td><code>ADOTPlaneSwitchNotifier</code></td><td>Notify overlay on TAB / swap.</td></tr>
+    <tr><td><code>ADOTInstantiateTracker</code></td><td>Spawn wrapper to flag non-pooled creates.</td></tr>
+  </tbody>
+</table>
+<h3>Setup</h3>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🔴 <code>[ADOT_PerfMonitor]</code> in every playtest scene; verify F1 + Console.</label></li>
+  <li><label><input type="checkbox"> 🔴 Wire notifier same day TAB works.</label></li>
+  <li><label><input type="checkbox"> 🟡 Marker+Registry <em>or</em> SectionTrigger — avoid double SetSection.</label></li>
+  <li><label><input type="checkbox"> 🟡 New combat/VFX spawns: use tracker until pooling.</label></li>
+</ul>
+
+<h2 id="open-decisions">Open decisions — answer / lock</h2>
+<p>Mirror major rows in <a href="../PRODUCTION/open-decisions-log.html">PRODUCTION / open decisions log</a> for LLM sessions.</p>
+<table class="data">
+  <thead><tr><th>#</th><th>Decision</th><th>Options / notes</th><th>Blocks</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Controller architecture</td><td>Code-driven + root motion for scripted moments (recommended)</td><td>Everything</td></tr>
+    <tr><td>2</td><td>Plane spatial layout</td><td>Overlapping + render layers vs offset ~1000u</td><td>All geometry</td></tr>
+    <tr><td>3</td><td>Section 4 puzzle</td><td>Co-op push / pattern dials / cross-plane alignment</td><td>S4</td></tr>
+    <tr><td>4</td><td>Section 7 puzzle</td><td>Heavy door co-op / Temporal dials / plane alignment</td><td>S7</td></tr>
+    <tr><td>5</td><td>S6 ghost memory</td><td>A domestic / B Uncle / C Convergence seed</td><td>S6</td></tr>
+    <tr><td>6</td><td>Warden execution — which parent</td><td>Active parent (recommended) vs locked Mother</td><td>S9</td></tr>
+    <tr><td>7</td><td>Warden ghost memory</td><td>Uncle argument vs domestic life</td><td>S9</td></tr>
+  </tbody>
+</table>
+
+<h2 id="s2">Sprint 2 — Graybox fixes</h2>
+<p>Fix graybox before geometry generator pass.</p>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🔴 S1–3 ground: wedge blocks not flat; re-tune controller if heights change.</label></li>
+  <li><label><input type="checkbox"> 🔴 S4+ stairs: vary step heights; mix auto-step and clamber.</label></li>
+  <li><label><input type="checkbox"> 🟡 S3 drop: playtest height until commitment reads.</label></li>
+  <li><label><input type="checkbox"> 🟡 S8: three distinct small arenas — not one slab.</label></li>
+  <li><label><input type="checkbox"> 🔴 After each chunk: resize Registry triggers; update Marker width/notes.</label></li>
+  <li><label><input type="checkbox"> 🟡 Graybox Overview WIP + export JSON after major layout.</label></li>
+  <li><label><input type="checkbox"> 🟡 Perf overlay on wedges/stairs: frame time + GC.</label></li>
+</ul>
+
+<h2 id="s3">Sprint 3 — Section by section (core interactions)</h2>
+<p>Per section: gameplay → Marker status → optional JSON export.</p>
+
+<h3>Section 1 — Graveyard</h3>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🟡 Plane split readable; cairn centre; Mother left / Father right.</label></li>
+  <li><label><input type="checkbox"> 🟡 Mother plane fade + camera to Father.</label></li>
+  <li><label><input type="checkbox"> 🟢 Dialogue + stone on cairn.</label></li>
+  <li><label><input type="checkbox"> 🟢 Stone-throw micro placeholder.</label></li>
+  <li><label><input type="checkbox"> 🟡 Marker S1 flags; Registry covers both parents.</label></li>
+</ul>
+
+<h3>Section 2 — Rune stones</h3>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🟡 Four rune stones; hits recede on <strong>both</strong> planes.</label></li>
+  <li><label><input type="checkbox"> 🟡 Mother-only / Father-only stones → TAB.</label></li>
+  <li><label><input type="checkbox"> 🟡 Teach attack + charge.</label></li>
+  <li><label><input type="checkbox"> 🟢 Lit/unlit visual; recede into ground.</label></li>
+  <li><label><input type="checkbox"> 🟡 Marker S2; trigger covers full rune area.</label></li>
+</ul>
+
+<h3>Section 3 — First enemies + traversal</h3>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🟡 Chest-high drop; two idle-until-engaged enemies.</label></li>
+  <li><label><input type="checkbox"> 🟡 Enemy line + parent response variants.</label></li>
+  <li><label><input type="checkbox"> 🟡 Post-fight: ≥3 climb heights.</label></li>
+  <li><label><input type="checkbox"> 🟢 Pre-fight line; combat light/heavy/stamina.</label></li>
+  <li><label><input type="checkbox"> 🟡 Marker S3 flags; watch GC if spawning FX.</label></li>
+</ul>
+
+<h3>Section 4 — Bridge + combat</h3>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🔴 Lock S4 puzzle (Decision #3); update Marker.</label></li>
+  <li><label><input type="checkbox"> 🟡 Glacial water placeholder; bridge Y-lerp; both planes interact.</label></li>
+  <li><label><input type="checkbox"> 🟡 Mid-bridge enemies initiate.</label></li>
+  <li><label><input type="checkbox"> 🟡 Dialogue per act doc.</label></li>
+  <li><label><input type="checkbox"> 🟢 Gradient slope + climbs at end.</label></li>
+  <li><label><input type="checkbox"> 🟡 Marker S4; fix trigger if bridge bypass.</label></li>
+</ul>
+
+<h3>Section 5 — Uphill + rune variation</h3>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🟡 Sustained uphill; BLOCK/DODGE rune teach.</label></li>
+  <li><label><input type="checkbox"> 🟢 Warm parent beat.</label></li>
+  <li><label><input type="checkbox"> 🟡 Marker S5 elevation positive.</label></li>
+</ul>
+
+<h3>Section 6 — Cramped fight + first Temporal</h3>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🔴 Lock ghost memory (Decision #5).</label></li>
+  <li><label><input type="checkbox"> 🟡 Cramped clearing; startle line; two-enemy fight.</label></li>
+  <li><label><input type="checkbox"> 🟡 Temporal: distinct look; resists fight; boss-tier.</label></li>
+  <li><label><input type="checkbox"> 🟡 Memory Extraction placeholder ~15s.</label></li>
+  <li><label><input type="checkbox"> 🟢 Teleattack unlock after kill; new climb approach.</label></li>
+  <li><label><input type="checkbox"> 🟡 Marker S6 boss/memory flags; tracker for VFX spawns.</label></li>
+</ul>
+
+<h3>Section 7 — Pure puzzle</h3>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🔴 Lock S7 puzzle (Decision #4).</label></li>
+  <li><label><input type="checkbox"> 🟡 Geo + both-planes interaction placeholder.</label></li>
+  <li><label><input type="checkbox"> 🟢 Fracture Swap reads as <strong>tool</strong>.</label></li>
+  <li><label><input type="checkbox"> 🟡 Marker S7 puzzle pip.</label></li>
+</ul>
+
+<h3>Section 8 — Pre-Warden</h3>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🟡 Three arena pockets; escalating behaviour.</label></li>
+  <li><label><input type="checkbox"> 🟢 ≥ one Teleattack encounter.</label></li>
+  <li><label><input type="checkbox"> 🟡 Marker S8 waves / optional child triggers.</label></li>
+</ul>
+
+<h3>Section 9 — Warden</h3>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🔴 Lock Decisions #6 and #7.</label></li>
+  <li><label><input type="checkbox"> 🔴 Tight approach / heavy door before arena.</label></li>
+  <li><label><input type="checkbox"> 🟡 Warden present; full dialogue beat; choice LET HER FINISH / STOP HER.</label></li>
+  <li><label><input type="checkbox"> 🟡 Execute vs spare paths + ghost memory.</label></li>
+  <li><label><input type="checkbox"> 🟢 Self-Teleport unlock after Warden.</label></li>
+  <li><label><input type="checkbox"> 🟢 Post-Warden movement weight.</label></li>
+  <li><label><input type="checkbox"> ⚪ Camera pull-back; temporal freeze ripple.</label></li>
+  <li><label><input type="checkbox"> 🟡 Marker S9; memory through long scene.</label></li>
+</ul>
+
+<h2 id="s4">Sprint 4 — Traversal animations (after controller locked)</h2>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🟡 Mother: Idle, Walk, vault, step/clamber, medium/extended climb, slip, ladder, top-out.</label></li>
+  <li><label><input type="checkbox"> 🟡 Father: same set, heavier timing.</label></li>
+  <li><label><input type="checkbox"> 🟢 Chimney, ledge, crawl, drop, jump, squeeze + audio muffle.</label></li>
+  <li><label><input type="checkbox"> ⚪ Idle fidgets, stumble recovery.</label></li>
+  <li><label><input type="checkbox"> 🟡 Update Markers traversal/bottleneck; re-export JSON.</label></li>
+</ul>
+
+<h2 id="s5">Sprint 5 — Combat (can parallel combat-test project)</h2>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🔴 Stamina bar; costs; no mid-combo regen.</label></li>
+  <li><label><input type="checkbox"> 🔴 Impact flash shader — core feel.</label></li>
+  <li><label><input type="checkbox"> 🟡 Mother/Father: light, heavy, dodge, block+parry (weight diff).</label></li>
+  <li><label><input type="checkbox"> 🟡 Deputized shatter; Temporal body + extraction.</label></li>
+  <li><label><input type="checkbox"> 🟡 Fracture Charge → forced swap; yank mid-anim.</label></li>
+  <li><label><input type="checkbox"> 🟢 Teleattack chain + swap mid-combo (S6 gate).</label></li>
+  <li><label><input type="checkbox"> 🟢 Memory Extraction full loop.</label></li>
+  <li><label><input type="checkbox"> 🟡 Combat-test perf; InstantiateTracker until pools.</label></li>
+</ul>
+
+<h2 id="s6">Sprint 6 — Dialogue</h2>
+<ul class="checklist">
+  <li><label><input type="checkbox"> 🔴 Yarn Spinner — no bespoke engine.</label></li>
+  <li><label><input type="checkbox"> 🟡 Subtitle colours Mother/Father/Daughter.</label></li>
+  <li><label><input type="checkbox"> 🟡 Triggers: not during combat.</label></li>
+  <li><label><input type="checkbox"> 🟡 Cross-plane voice first TAB beat.</label></li>
+  <li><label><input type="checkbox"> 🟢 S1–9 lines in Yarn wired to triggers.</label></li>
+  <li><label><input type="checkbox"> 🟡 Markers: dialogue notes; overlay vs subtitle alignment.</label></li>
+</ul>
+
+<h2 id="done">Act&nbsp;I done when</h2>
+<ul class="checklist">
+  <li><label><input type="checkbox"> Both parents walk S1→S9; TAB clean on terrain.</label></li>
+  <li><label><input type="checkbox"> Rune stones (S2, S5); bridge (S4); S7 puzzle functional.</label></li>
+  <li><label><input type="checkbox"> Basic combat: light, heavy, dodge, block, stamina.</label></li>
+  <li><label><input type="checkbox"> Temporal + Memory Extraction placeholder (S6).</label></li>
+  <li><label><input type="checkbox"> Warden both outcomes; Self-Teleport after.</label></li>
+  <li><label><input type="checkbox"> Act&nbsp;I dialogue triggering correctly.</label></li>
+  <li><label><input type="checkbox"> All Markers Done or explicitly deferred with reason.</label></li>
+  <li><label><input type="checkbox"> Latest Export Section Map matches build.</label></li>
+  <li><label><input type="checkbox"> Perf prefab in playtest scenes; plane+section correct; no mystery GC on core loop.</label></li>
+</ul>
+
+<p class="tag draft">Act&nbsp;I only. When this is green, open Act&nbsp;II planning separately.</p>
+
+</main>
+<footer class="site-footer"><a href="index.html">← Sprints</a> · <a href="../MASTER.html">MASTER</a></footer>
+<script id="adot-doc-nav" data-depth="1" src="../nav.js"></script>
+</body>
+</html>

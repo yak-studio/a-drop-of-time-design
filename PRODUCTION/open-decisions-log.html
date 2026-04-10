@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open decisions log | A Drop of Time</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <p class="crumbs"><a href="../MASTER.html">MASTER</a> / <a href="index.html">PRODUCTION</a> / Open decisions log</p>
+  <h1>Open decisions log</h1>
+  <p class="lead">Unresolved design questions. <strong>Include this page in LLM sessions when the task touches a listed topic.</strong> Update status as you go—prevents re-arguing the same call every few weeks.</p>
+</header>
+
+<main id="main" class="content">
+
+<h2 id="status-key">Status key</h2>
+<ul>
+  <li><span class="status open">Open</span> — not settled; gather options.</li>
+  <li><span class="status discussion">In discussion</span> — leaning exists; needs final sign-off.</li>
+  <li><span class="status locked">Locked</span> — canon; only change via changelog + stakeholder note.</li>
+</ul>
+
+<h2 id="how-to-use">How to use</h2>
+<ol>
+  <li>Add a row when a question appears—one sentence topic + notes column.</li>
+  <li>Link out to STORY / LEVEL_DESIGN / etc. when a doc holds detail.</li>
+  <li>When locking, move the rationale into <a href="changelog.html">changelog</a> and set status to Locked.</li>
+</ol>
+
+<h2 id="decisions">Decisions</h2>
+<table class="data">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Topic</th>
+      <th>Status</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>D-001</td>
+      <td>Which parent executes the Warden (if at all)?</td>
+      <td><span class="status open">Open</span></td>
+      <td>Must stay consistent with endings and Uncle through-line.</td>
+    </tr>
+    <tr>
+      <td>D-002</td>
+      <td>Section 4 puzzle definition (Act I)</td>
+      <td><span class="status open">Open</span></td>
+      <td>Tie to mechanic-unlock ladder; see <a href="../PUZZLES/mechanic-dependencies.html">mechanic dependencies</a>.</td>
+    </tr>
+    <tr>
+      <td>D-003</td>
+      <td>Hologram / guide entity retention in final game</td>
+      <td><span class="status open">Open</span></td>
+      <td>Graybox may use placeholders; lock before VO pass.</td>
+    </tr>
+    <tr>
+      <td>D-004</td>
+      <td>Budokai chase — fail states and checkpointing</td>
+      <td><span class="status discussion">In discussion</span></td>
+      <td>Narrative justification lives in <a href="../COMBAT/budokai-chase.html">Budokai chase</a> + <a href="../STORY/lore-world-rules.html">lore</a>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="tag draft">Seed rows — edit, add IDs, delete when obsolete.</p>
+
+</main>
+<footer class="site-footer">
+  <a href="../MASTER.html">← MASTER</a> · <a href="index.html">PRODUCTION index</a>
+</footer>
+<script id="adot-doc-nav" data-depth="1" src="../nav.js"></script>
+</body>
+</html>
