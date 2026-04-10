@@ -1,23 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Encounter philosophy | A Drop of Time</title>
-<link rel="stylesheet" href="../styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Encounter philosophy | A Drop of Time</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; background: #fff; color: #1a1a1a; }
+    a { color: #1a1a1a; }
+    a:hover { text-decoration: none; }
+    header { padding: 0.5rem 1.5rem; border-bottom: 1px solid #ddd; font-size: 0.85rem; color: #555; }
+    header a { color: #555; text-decoration: none; }
+    header a:hover { text-decoration: underline; }
+    .layout { display: flex; min-height: 100vh; }
+    nav { width: 220px; flex-shrink: 0; border-right: 1px solid #ddd; padding: 1.5rem 1rem; font-size: 0.85rem; }
+    nav h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 0.5rem; }
+    nav ul { list-style: none; }
+    nav ul li { margin-bottom: 0.25rem; }
+    nav ul li a { text-decoration: none; color: #333; }
+    nav ul li a:hover { text-decoration: underline; }
+    nav ul li.active a { font-weight: 600; color: #000; }
+    nav .section { margin-bottom: 1.25rem; }
+    main { flex: 1; padding: 2rem 2.5rem; max-width: 860px; }
+    h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .subtitle { color: #555; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .callout { border-left: 3px solid #aaa; padding: 0.6rem 1rem; background: #f8f8f8; font-size: 0.875rem; color: #444; margin-bottom: 1.75rem; }
+    .callout strong { color: #111; }
+    h2 { font-size: 1.15rem; font-weight: 700; margin: 2rem 0 0.6rem; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; }
+    h3 { font-size: 0.95rem; font-weight: 600; margin: 1.25rem 0 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; color: #555; }
+    p { margin-bottom: 0.75rem; }
+    ul { margin: 0.4rem 0 0.75rem 1.5rem; }
+    li { margin-bottom: 0.25rem; }
+    .todo { color: #aaa; font-style: italic; }
+    .tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; background: #eee; color: #555; padding: 0.15rem 0.4rem; border-radius: 2px; margin-left: 0.4rem; vertical-align: middle; }
+    .tag.locked { background: #dff0d8; color: #3c763d; }
+    .tag.tbd { background: #d9edf7; color: #31708f; }
+    .related { margin-top: 2.5rem; border-top: 1px solid #eee; padding-top: 1rem; font-size: 0.875rem; }
+    .related h2 { font-size: 0.9rem; border: none; text-transform: none; letter-spacing: 0; color: #1a1a1a; margin: 0 0 0.5rem; }
+    .related ul { margin-left: 1rem; }
+    footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.8rem; color: #888; }
+    footer a { color: #888; }
+  </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <p class="crumbs"><a href="../MASTER.html">MASTER</a> / <a href="../COMBAT/index.html">COMBAT</a> / Encounter philosophy</p>
-  <h1>Encounter philosophy</h1>
-  <p class="lead">Enemy encounter design.</p>
+
+<header>
+  <a href="../MASTER.html">MASTER</a> / <a href="index.html">COMBAT</a> / Encounter philosophy
 </header>
-<main id="main" class="content">
-<p class="tag draft">Stub — replace with canon.</p>
-<p>Add content here. For images, add a folder such as <code>../images/</code> and reference with relative URLs.</p>
-</main>
-<footer class="site-footer"><a href="../MASTER.html">← MASTER</a> · <a href="../COMBAT/index.html">COMBAT index</a></footer>
-<script id="adot-doc-nav" data-depth="1" src="../nav.js"></script>
+
+<div class="layout">
+  <nav>
+    <div class="section">
+      <h2>Combat</h2>
+      <ul>
+        <li><a href="overview.html">Overview</a></li>
+        <li><a href="move-sets.html">Move sets</a></li>
+        <li class="active"><a href="encounter-philosophy.html">Encounter philosophy</a></li>
+        <li><a href="budokai-chase.html">Budokai chase</a></li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Sections</h2>
+      <ul>
+        <li><a href="../STORY/index.html">Story</a></li>
+        <li><a href="../CHARACTERS/index.html">Characters</a></li>
+        <li><a href="../PUZZLES/index.html">Puzzles</a></li>
+        <li><a href="../LEVEL_DESIGN/index.html">Level design</a></li>
+        <li><a href="../TRAVERSAL/index.html">Traversal</a></li>
+        <li><a href="../ART_VISUAL/index.html">Art &amp; visual</a></li>
+        <li><a href="../AUDIO/index.html">Audio</a></li>
+        <li><a href="../TECHNICAL/index.html">Technical</a></li>
+        <li><a href="../PRODUCTION/index.html">Production</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <h1>Encounter philosophy</h1>
+    <p class="subtitle">How fights are designed, paced, and made to mean something.</p>
+
+    <div class="callout">
+      <strong>Rule:</strong> If two fights feel identical, cut or mutate one. Every encounter earns its place through escalation, emotional function, or mechanical teaching — ideally all three.
+    </div>
+
+    <h2>Design rules <span class="tag locked">locked</span></h2>
+    <ul>
+      <li>Fights create guilt. Ghost memories contextualise it. Player choices weaponise it.</li>
+      <li>Deputized are people — fear, loyalty, desperation. Never abstract opposition.</li>
+      <li>Temporals are scarce. Each kill is an event, not a checkpoint.</li>
+      <li>No encounter should read as power fantasy. Discomfort is the intended register.</li>
+    </ul>
+
+    <h2>Escalation arc per act <span class="tag locked">locked</span></h2>
+
+    <h3>Act I template</h3>
+    <p>Confusion → resistance → intimacy (first Temporal kill) → moral pressure → organised defence.</p>
+    <p class="todo">TBD — specific encounter beats mapped to Act I sections. Cross-reference <a href="../LEVEL_DESIGN/act-i-forest-horizontal.html">Act I horizontal beats</a>.</p>
+
+    <h3>Act II</h3>
+    <p>Prepared defensive lines; ambush; siege desperation. Enemies know the parents are coming.</p>
+    <p class="todo">TBD — specific encounter beats. Cross-reference <a href="../LEVEL_DESIGN/act-ii-moraine-horizontal.html">Act II horizontal beats</a>.</p>
+
+    <h3>Act III</h3>
+    <p>Last stands. Young combatants. The ugliness is intentional — the cost of the climb made visible. No new player verbs; pure mastery pressure.</p>
+    <p><strong>Signature fight:</strong> Dual-Temporal — one per plane. The Act III thesis for Fracture Charge: forced swap becomes precision tool for interrupting enemy charge cycles. This is the mechanical payoff of the entire system.</p>
+    <p class="todo">TBD — specific encounter beats. Cross-reference <a href="../LEVEL_DESIGN/act-iii-death-zone-horizontal.html">Act III horizontal beats</a>.</p>
+
+    <h2>Temporal encounter design <span class="tag tbd">TBD</span></h2>
+    <p class="todo">TBD — how are Temporal fights structured differently from deputized encounters? Phase design, tells, plane-specific behaviours, memory extraction trigger.</p>
+
+    <h2>Encounter pacing rules <span class="tag tbd">TBD</span></h2>
+    <p class="todo">TBD — spacing between encounters, rest beats, how the four-beat zone rhythm (Ascent / Clash / Bleed / Breath) governs encounter placement. See <a href="../LEVEL_DESIGN/four-beat-rhythm.html">four-beat rhythm</a>.</p>
+
+    <h2>Flee / avoid design <span class="tag tbd">TBD</span></h2>
+    <p class="todo">TBD — are there encounters the player can or should avoid? Set-piece chase/flee moments? How does this interact with the Budokai chase mechanic?</p>
+
+    <h2>Notes</h2>
+    <p class="todo">TBD — anything else about encounter design philosophy, specific fights that are load-bearing, fights that have been cut.</p>
+
+    <div class="related">
+      <h2>Related</h2>
+      <ul>
+        <li><a href="overview.html">Combat overview</a> — Core systems and tone</li>
+        <li><a href="budokai-chase.html">Budokai chase</a> — Chase/flee encounter type</li>
+        <li><a href="../CHARACTERS/enemy-archetypes.html">Enemy archetypes</a> — Who populates encounters and how they behave</li>
+        <li><a href="../LEVEL_DESIGN/four-beat-rhythm.html">Four-beat rhythm</a> — Clash beat governs encounter placement</li>
+        <li><a href="../LEVEL_DESIGN/act-i-forest-horizontal.html">Act I horizontal beats</a></li>
+        <li><a href="../LEVEL_DESIGN/act-ii-moraine-horizontal.html">Act II horizontal beats</a></li>
+        <li><a href="../LEVEL_DESIGN/act-iii-death-zone-horizontal.html">Act III horizontal beats</a></li>
+      </ul>
+    </div>
+
+    <footer>
+      <a href="../MASTER.html">← MASTER</a> · <a href="index.html">COMBAT index</a>
+    </footer>
+  </main>
+</div>
+
 </body>
 </html>

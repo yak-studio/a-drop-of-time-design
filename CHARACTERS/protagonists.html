@@ -1,23 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Protagonists | A Drop of Time</title>
-<link rel="stylesheet" href="../styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Protagonists | A Drop of Time</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; background: #fff; color: #1a1a1a; }
+    a { color: #1a1a1a; }
+    a:hover { text-decoration: none; }
+    header { padding: 0.5rem 1.5rem; border-bottom: 1px solid #ddd; font-size: 0.85rem; color: #555; }
+    header a { color: #555; text-decoration: none; }
+    header a:hover { text-decoration: underline; }
+    .layout { display: flex; min-height: 100vh; }
+    nav { width: 220px; flex-shrink: 0; border-right: 1px solid #ddd; padding: 1.5rem 1rem; font-size: 0.85rem; }
+    nav h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 0.5rem; }
+    nav ul { list-style: none; }
+    nav ul li { margin-bottom: 0.25rem; }
+    nav ul li a { text-decoration: none; color: #333; }
+    nav ul li a:hover { text-decoration: underline; }
+    nav ul li.active a { font-weight: 600; color: #000; }
+    nav .section { margin-bottom: 1.25rem; }
+    main { flex: 1; padding: 2rem 2.5rem; max-width: 860px; }
+    h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .subtitle { color: #555; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .callout { border-left: 3px solid #aaa; padding: 0.6rem 1rem; background: #f8f8f8; font-size: 0.875rem; color: #444; margin-bottom: 1.75rem; }
+    .callout strong { color: #111; }
+    h2 { font-size: 1.25rem; font-weight: 700; margin: 2.5rem 0 0.25rem; border-bottom: 2px solid #1a1a1a; padding-bottom: 0.3rem; }
+    h3 { font-size: 0.95rem; font-weight: 600; margin: 1.25rem 0 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; color: #555; }
+    p { margin-bottom: 0.75rem; }
+    ul { margin: 0.4rem 0 0.75rem 1.5rem; }
+    li { margin-bottom: 0.2rem; }
+    .todo { color: #aaa; font-style: italic; }
+    .tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; background: #fcf8e3; color: #8a6d3b; padding: 0.15rem 0.4rem; border-radius: 2px; margin-left: 0.4rem; vertical-align: middle; }
+    .char-block { margin-bottom: 3rem; }
+    .related { margin-top: 2.5rem; border-top: 1px solid #eee; padding-top: 1rem; font-size: 0.875rem; }
+    .related h2 { font-size: 0.9rem; border: none; text-transform: none; letter-spacing: 0; color: #1a1a1a; margin: 0 0 0.5rem; }
+    .related ul { margin-left: 1rem; }
+    footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.8rem; color: #888; }
+    footer a { color: #888; }
+  </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <p class="crumbs"><a href="../MASTER.html">MASTER</a> / <a href="../CHARACTERS/index.html">CHARACTERS</a> / Protagonists</p>
-  <h1>Protagonists</h1>
-  <p class="lead">Mother, Father, Daughter.</p>
+
+<header>
+  <a href="../MASTER.html">MASTER</a> / <a href="index.html">CHARACTERS</a> / Protagonists
 </header>
-<main id="main" class="content">
-<p class="tag draft">Stub — replace with canon.</p>
-<p>Add content here. For images, add a folder such as <code>../images/</code> and reference with relative URLs.</p>
-</main>
-<footer class="site-footer"><a href="../MASTER.html">← MASTER</a> · <a href="../CHARACTERS/index.html">CHARACTERS index</a></footer>
-<script id="adot-doc-nav" data-depth="1" src="../nav.js"></script>
+
+<div class="layout">
+  <nav>
+    <div class="section">
+      <h2>Characters</h2>
+      <ul>
+        <li class="active"><a href="protagonists.html">Protagonists</a></li>
+        <li><a href="uncle.html">The Uncle</a></li>
+        <li><a href="npcs.html">NPCs</a></li>
+        <li><a href="enemy-archetypes.html">Enemy archetypes</a></li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Sections</h2>
+      <ul>
+        <li><a href="../STORY/index.html">Story</a></li>
+        <li><a href="../COMBAT/index.html">Combat</a></li>
+        <li><a href="../PUZZLES/index.html">Puzzles</a></li>
+        <li><a href="../LEVEL_DESIGN/index.html">Level design</a></li>
+        <li><a href="../TRAVERSAL/index.html">Traversal</a></li>
+        <li><a href="../ART_VISUAL/index.html">Art &amp; visual</a></li>
+        <li><a href="../AUDIO/index.html">Audio</a></li>
+        <li><a href="../TECHNICAL/index.html">Technical</a></li>
+        <li><a href="../PRODUCTION/index.html">Production</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <h1>Protagonists</h1>
+    <p class="subtitle">Mother, Father, Daughter. Nameless by design — roles over identities.</p>
+
+    <div class="callout">
+      <strong>Fill-in scaffold.</strong> Sections marked <em>TBD</em> need content. Locked beats pulled from <a href="../STORY/plot-and-acts.html">plot &amp; acts</a> are pre-filled as reference.
+    </div>
+
+    <!-- ===================== MOTHER ===================== -->
+    <div class="char-block">
+      <h2>Mother</h2>
+
+      <h3>One-line</h3>
+      <p class="todo">TBD — who is she in one sentence?</p>
+
+      <h3>Appearance</h3>
+      <p class="todo">TBD — physical description, age range, silhouette notes.</p>
+
+      <h3>Plane</h3>
+      <p>Harsher, faster read. Her momentum shapes the environment around her.</p>
+
+      <h3>Core drive</h3>
+      <p><em>"We fix this."</em> Momentum as response to grief — buries loss in forward motion. Accelerates after the Act II revival reveal. <span class="tag">fill in</span> — expand on what she was like before the fracture if known.</p>
+
+      <h3>Contradiction (one per act, never underlined)</h3>
+      <p>Act I: hesitates over an unconscious deputized enemy — once, never referenced again.</p>
+      <p>Act II: <span class="tag">TBD</span></p>
+      <p>Act III: <span class="tag">TBD</span></p>
+
+      <h3>Relationship to Father</h3>
+      <p class="todo">TBD — dynamic, history, what the fracture broke between them beyond the obvious.</p>
+
+      <h3>Relationship to Daughter</h3>
+      <p>Saw the fearless explorer. <em>"You always wanted her to be braver than she was."</em></p>
+
+      <h3>Arc across acts</h3>
+      <p>Act I: <span class="tag">TBD</span></p>
+      <p>Act II: Accelerates after revival reveal. Coerces Father forward.</p>
+      <p>Act III: <span class="tag">TBD</span> — Father's line: <em>"She would have hated what we've become."</em></p>
+
+      <h3>Combat / traversal flavour</h3>
+      <p class="todo">TBD — how does her personality show in how she moves and fights?</p>
+
+      <h3>Notes</h3>
+      <p class="todo">TBD — anything else.</p>
+    </div>
+
+    <!-- ===================== FATHER ===================== -->
+    <div class="char-block">
+      <h2>Father</h2>
+
+      <h3>One-line</h3>
+      <p class="todo">TBD — who is he in one sentence?</p>
+
+      <h3>Appearance</h3>
+      <p class="todo">TBD — physical description, age range, silhouette notes.</p>
+
+      <h3>Plane</h3>
+      <p>Colder, heavier. Doubt and stillness. Gameplay begins on his plane at the start of each act.</p>
+
+      <h3>Core drive</h3>
+      <p><em>"We measure the cost."</em> Cannot stop accounting for what the climb is taking. Slows, refuses, needs pulling. <span class="tag">fill in</span> — is this guilt specifically, or something broader?</p>
+
+      <h3>Contradiction (one per act, never underlined)</h3>
+      <p>Act I: takes a reckless shortcut.</p>
+      <p>Act II: <span class="tag">TBD</span></p>
+      <p>Act III: <span class="tag">TBD</span></p>
+
+      <h3>Relationship to Mother</h3>
+      <p class="todo">TBD — dynamic, tension, what holds them together.</p>
+
+      <h3>Relationship to Daughter</h3>
+      <p>Saw the quiet, dependent child. <em>"And you always wanted to protect her."</em> Humming beat: on the Act II ice bridge, he stops walking when he hears her tune. No dialogue.</p>
+
+      <h3>Arc across acts</h3>
+      <p>Act I: <span class="tag">TBD</span></p>
+      <p>Act II: Breaking point — mechanical refusal to move. Mother pulls him with the mismatched-socks memory. Asks: <em>"How many did we kill to get here?"</em></p>
+      <p>Act III: Moral paralysis. <em>"She would have hated what we've become."</em> Summit: <em>"What if she doesn't want to come back?"</em> — unknowing truth.</p>
+
+      <h3>Combat / traversal flavour</h3>
+      <p class="todo">TBD — how does his weight and doubt show in movement and combat?</p>
+
+      <h3>Notes</h3>
+      <p class="todo">TBD — anything else.</p>
+    </div>
+
+    <!-- ===================== DAUGHTER ===================== -->
+    <div class="char-block">
+      <h2>Daughter</h2>
+
+      <h3>One-line</h3>
+      <p>Seven years old. A child, not a symbol — the prologue insists on this.</p>
+
+      <h3>Appearance</h3>
+      <p class="todo">TBD — physical description, silhouette.</p>
+
+      <h3>Planted details (prologue — locked)</h3>
+      <ul>
+        <li>Mismatched socks — <em>"they make her strong."</em></li>
+        <li>Lucky stone — smooth, dark grey.</li>
+        <li>Off-key hum — Father picks this up on the Act II ice bridge.</li>
+        <li>One small petty act (bird / apple — TBD) — without commentary.</li>
+      </ul>
+
+      <h3>Plane</h3>
+      <p>The 13th — where she exists after death, contained. Companion is here. Her plane expands at the cost of others.</p>
+
+      <h3>Interludes</h3>
+      <p><strong>Interlude I:</strong> Does not know she is dead. Tries to run to parents; space resists.</p>
+      <p><strong>Interlude II:</strong> Understands the cost of return. Chooses to let go — for them. Parents never see this. (Irony lock.)</p>
+
+      <h3>Dialogue</h3>
+      <p class="todo">TBD — does she speak in the interludes, or is she wordless? If she speaks, what is her register?</p>
+
+      <h3>Relationship to Companion</h3>
+      <p class="todo">TBD — how does she relate to the Companion across the two interludes?</p>
+
+      <h3>Notes</h3>
+      <p class="todo">TBD — anything else about her feel, presence, what the player should carry from the prologue.</p>
+    </div>
+
+    <div class="related">
+      <h2>Related</h2>
+      <ul>
+        <li><a href="../STORY/plot-and-acts.html">Plot &amp; acts</a> — Prologue, act beats, interlude structure</li>
+        <li><a href="../STORY/ritual.html">The ritual</a> — Items each parent offers; fourth ritual in Ending A</li>
+        <li><a href="../STORY/endings.html">Endings</a> — What each ending means for each character</li>
+        <li><a href="uncle.html">The Uncle</a> — Family relationship</li>
+        <li><a href="../COMBAT/move-sets.html">Move sets</a> — Per-character combat abilities</li>
+        <li><a href="../TRAVERSAL/movement-and-states.html">Movement &amp; states</a> — Per-character traversal capabilities</li>
+      </ul>
+    </div>
+
+    <footer>
+      <a href="../MASTER.html">← MASTER</a> · <a href="index.html">CHARACTERS index</a>
+    </footer>
+  </main>
+</div>
+
 </body>
 </html>

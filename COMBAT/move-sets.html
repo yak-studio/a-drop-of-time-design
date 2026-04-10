@@ -1,23 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Move sets | A Drop of Time</title>
-<link rel="stylesheet" href="../styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Move sets | A Drop of Time</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; background: #fff; color: #1a1a1a; }
+    a { color: #1a1a1a; }
+    a:hover { text-decoration: none; }
+    header { padding: 0.5rem 1.5rem; border-bottom: 1px solid #ddd; font-size: 0.85rem; color: #555; }
+    header a { color: #555; text-decoration: none; }
+    header a:hover { text-decoration: underline; }
+    .layout { display: flex; min-height: 100vh; }
+    nav { width: 220px; flex-shrink: 0; border-right: 1px solid #ddd; padding: 1.5rem 1rem; font-size: 0.85rem; }
+    nav h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 0.5rem; }
+    nav ul { list-style: none; }
+    nav ul li { margin-bottom: 0.25rem; }
+    nav ul li a { text-decoration: none; color: #333; }
+    nav ul li a:hover { text-decoration: underline; }
+    nav ul li.active a { font-weight: 600; color: #000; }
+    nav .section { margin-bottom: 1.25rem; }
+    main { flex: 1; padding: 2rem 2.5rem; max-width: 860px; }
+    h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .subtitle { color: #555; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .callout { border-left: 3px solid #aaa; padding: 0.6rem 1rem; background: #f8f8f8; font-size: 0.875rem; color: #444; margin-bottom: 1.75rem; }
+    .callout strong { color: #111; }
+    h2 { font-size: 1.25rem; font-weight: 700; margin: 2.5rem 0 0.25rem; border-bottom: 2px solid #1a1a1a; padding-bottom: 0.3rem; }
+    h3 { font-size: 0.95rem; font-weight: 600; margin: 1.25rem 0 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; color: #555; }
+    p { margin-bottom: 0.75rem; }
+    ul { margin: 0.4rem 0 0.75rem 1.5rem; }
+    li { margin-bottom: 0.25rem; }
+    .todo { color: #aaa; font-style: italic; }
+    .tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; background: #eee; color: #555; padding: 0.15rem 0.4rem; border-radius: 2px; margin-left: 0.4rem; vertical-align: middle; }
+    .tag.locked { background: #dff0d8; color: #3c763d; }
+    .tag.tbd { background: #d9edf7; color: #31708f; }
+    table { border-collapse: collapse; width: 100%; margin: 0.75rem 0 1rem; font-size: 0.875rem; }
+    th { text-align: left; border-bottom: 2px solid #ddd; padding: 0.4rem 0.6rem; }
+    td { border-bottom: 1px solid #eee; padding: 0.4rem 0.6rem; vertical-align: top; }
+    .char-block { margin-bottom: 3rem; }
+    .related { margin-top: 2.5rem; border-top: 1px solid #eee; padding-top: 1rem; font-size: 0.875rem; }
+    .related h2 { font-size: 0.9rem; border: none; text-transform: none; letter-spacing: 0; color: #1a1a1a; margin: 0 0 0.5rem; }
+    .related ul { margin-left: 1rem; }
+    footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.8rem; color: #888; }
+    footer a { color: #888; }
+  </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <p class="crumbs"><a href="../MASTER.html">MASTER</a> / <a href="../COMBAT/index.html">COMBAT</a> / Move sets</p>
-  <h1>Move sets</h1>
-  <p class="lead">Per-character moves.</p>
+
+<header>
+  <a href="../MASTER.html">MASTER</a> / <a href="index.html">COMBAT</a> / Move sets
 </header>
-<main id="main" class="content">
-<p class="tag draft">Stub — replace with canon.</p>
-<p>Add content here. For images, add a folder such as <code>../images/</code> and reference with relative URLs.</p>
-</main>
-<footer class="site-footer"><a href="../MASTER.html">← MASTER</a> · <a href="../COMBAT/index.html">COMBAT index</a></footer>
-<script id="adot-doc-nav" data-depth="1" src="../nav.js"></script>
+
+<div class="layout">
+  <nav>
+    <div class="section">
+      <h2>Combat</h2>
+      <ul>
+        <li><a href="overview.html">Overview</a></li>
+        <li class="active"><a href="move-sets.html">Move sets</a></li>
+        <li><a href="encounter-philosophy.html">Encounter philosophy</a></li>
+        <li><a href="budokai-chase.html">Budokai chase</a></li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Sections</h2>
+      <ul>
+        <li><a href="../STORY/index.html">Story</a></li>
+        <li><a href="../CHARACTERS/index.html">Characters</a></li>
+        <li><a href="../PUZZLES/index.html">Puzzles</a></li>
+        <li><a href="../LEVEL_DESIGN/index.html">Level design</a></li>
+        <li><a href="../TRAVERSAL/index.html">Traversal</a></li>
+        <li><a href="../ART_VISUAL/index.html">Art &amp; visual</a></li>
+        <li><a href="../AUDIO/index.html">Audio</a></li>
+        <li><a href="../TECHNICAL/index.html">Technical</a></li>
+        <li><a href="../PRODUCTION/index.html">Production</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <h1>Move sets</h1>
+    <p class="subtitle">Per-character moves, unlock timing, and combat identity.</p>
+
+    <div class="callout">
+      <strong>Fill-in scaffold.</strong> Combat identity (faster/slower) is locked from <a href="overview.html">combat overview</a>. Move names, inputs, and unlock timing need filling in.
+    </div>
+
+    <!-- SHARED VERBS -->
+    <h2>Shared verbs <span class="tag locked">both characters</span></h2>
+
+    <h3>Available from Act I</h3>
+    <table>
+      <tr><th>Move</th><th>Input</th><th>Description</th><th>Notes</th></tr>
+      <tr><td>Basic attack chain</td><td class="todo">TBD</td><td class="todo">TBD</td><td>Foundation for Teleattack</td></tr>
+      <tr><td>Dodge / evade</td><td class="todo">TBD</td><td class="todo">TBD</td><td class="todo">TBD</td></tr>
+      <tr><td>Fracture swap (TAB)</td><td>TAB</td><td>Switch to other parent; builds Fracture Charge in combat</td><td>Navigation outside combat; forced when charge full</td></tr>
+      <tr><td>Teleattack</td><td class="todo">TBD</td><td>Chain attack → swap mid-combo, continuing pressure on other parent</td><td>Unlocks after first Temporal kill, Act I</td></tr>
+      <tr><td>Memory extraction</td><td class="todo">TBD</td><td>Palm to forehead on Temporal kill; ~15s ghost memory</td><td>Temporal kills only; auto-triggered or prompted?</td></tr>
+    </table>
+
+    <h3>Unlocked Act II</h3>
+    <table>
+      <tr><th>Move</th><th>Input</th><th>Description</th><th>Notes</th></tr>
+      <tr><td>Item teleport</td><td class="todo">TBD</td><td>Teleport a held/nearby object across the plane boundary</td><td>Puzzle-primary; combat use TBD</td></tr>
+      <tr><td>Self-teleport</td><td class="todo">TBD</td><td>Teleport self short distance within plane</td><td>Unlocks from Warden plane collapse; taught mid-Act II</td></tr>
+    </table>
+
+    <h3>Act III — mastery only</h3>
+    <p>No new verbs in Act III. Existing systems combined at full expression. See <a href="encounter-philosophy.html">encounter philosophy</a> for how encounters are designed around this.</p>
+
+    <!-- MOTHER -->
+    <div class="char-block">
+      <h2>Mother</h2>
+      <p>Combat identity: <strong>faster, aggressive.</strong> Enemies on her plane apply different pressure than Father's.</p>
+
+      <h3>Unique moves / modifiers</h3>
+      <table>
+        <tr><th>Move</th><th>Input</th><th>Description</th><th>Unlock</th></tr>
+        <tr><td class="todo">TBD</td><td class="todo">TBD</td><td class="todo">TBD</td><td class="todo">TBD</td></tr>
+        <tr><td class="todo">TBD</td><td class="todo">TBD</td><td class="todo">TBD</td><td class="todo">TBD</td></tr>
+      </table>
+
+      <h3>Stamina profile</h3>
+      <p class="todo">TBD — pool size, recovery rate, how it differs from Father's.</p>
+
+      <h3>Combat feel notes</h3>
+      <p class="todo">TBD — what should fighting as Mother feel like? Forward pressure, momentum, risk tolerance?</p>
+    </div>
+
+    <!-- FATHER -->
+    <div class="char-block">
+      <h2>Father</h2>
+      <p>Combat identity: <strong>slower, deliberate.</strong> High payoff windows reward patience. Gameplay begins on his plane at the start of each act.</p>
+
+      <h3>Unique moves / modifiers</h3>
+      <table>
+        <tr><th>Move</th><th>Input</th><th>Description</th><th>Unlock</th></tr>
+        <tr><td class="todo">TBD</td><td class="todo">TBD</td><td class="todo">TBD</td><td class="todo">TBD</td></tr>
+        <tr><td class="todo">TBD</td><td class="todo">TBD</td><td class="todo">TBD</td><td class="todo">TBD</td></tr>
+      </table>
+
+      <h3>Stamina profile</h3>
+      <p class="todo">TBD — pool size, recovery rate, interaction with his slower attack timing.</p>
+
+      <h3>Combat feel notes</h3>
+      <p class="todo">TBD — what should fighting as Father feel like? Weight, consequence, reluctance?</p>
+    </div>
+
+    <!-- UNLOCK LADDER SUMMARY -->
+    <h2>Unlock summary</h2>
+    <table>
+      <tr><th>Act</th><th>Verb introduced</th><th>Taught via</th></tr>
+      <tr><td>Act I</td><td>Basic chain, dodge, fracture swap, teleattack</td><td>Rune stones, first Temporal kill</td></tr>
+      <tr><td>Act II (early)</td><td>Item teleport</td><td class="todo">TBD</td></tr>
+      <tr><td>Act II (mid)</td><td>Self-teleport</td><td>Warden plane collapse unlock</td></tr>
+      <tr><td>Act II (late)</td><td>Graduation puzzle — item + self teleport combined</td><td class="todo">TBD</td></tr>
+      <tr><td>Act III</td><td>No new verbs — mastery</td><td>—</td></tr>
+    </table>
+
+    <div class="related">
+      <h2>Related</h2>
+      <ul>
+        <li><a href="overview.html">Combat overview</a> — Fracture Charge, Teleattack, tone rules</li>
+        <li><a href="encounter-philosophy.html">Encounter philosophy</a> — How moves are introduced in encounters</li>
+        <li><a href="../TECHNICAL/mechanic-unlock-ladder.html">Mechanic unlock ladder</a> — Full verb introduction order</li>
+        <li><a href="../TRAVERSAL/movement-and-states.html">Movement &amp; states</a> — Non-combat movement verbs</li>
+      </ul>
+    </div>
+
+    <footer>
+      <a href="../MASTER.html">← MASTER</a> · <a href="index.html">COMBAT index</a>
+    </footer>
+  </main>
+</div>
+
 </body>
 </html>

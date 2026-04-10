@@ -1,44 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Combat overview | A Drop of Time</title>
-<link rel="stylesheet" href="../styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Combat overview | A Drop of Time</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; background: #fff; color: #1a1a1a; }
+    a { color: #1a1a1a; }
+    a:hover { text-decoration: none; }
+    header { padding: 0.5rem 1.5rem; border-bottom: 1px solid #ddd; font-size: 0.85rem; color: #555; }
+    header a { color: #555; text-decoration: none; }
+    header a:hover { text-decoration: underline; }
+    .layout { display: flex; min-height: 100vh; }
+    nav { width: 220px; flex-shrink: 0; border-right: 1px solid #ddd; padding: 1.5rem 1rem; font-size: 0.85rem; }
+    nav h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 0.5rem; }
+    nav ul { list-style: none; }
+    nav ul li { margin-bottom: 0.25rem; }
+    nav ul li a { text-decoration: none; color: #333; }
+    nav ul li a:hover { text-decoration: underline; }
+    nav ul li.active a { font-weight: 600; color: #000; }
+    nav .section { margin-bottom: 1.25rem; }
+    main { flex: 1; padding: 2rem 2.5rem; max-width: 860px; }
+    h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .subtitle { color: #555; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .callout { border-left: 3px solid #aaa; padding: 0.6rem 1rem; background: #f8f8f8; font-size: 0.875rem; color: #444; margin-bottom: 1.75rem; }
+    .callout strong { color: #111; }
+    h2 { font-size: 1.15rem; font-weight: 700; margin: 2rem 0 0.6rem; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; }
+    h3 { font-size: 0.95rem; font-weight: 600; margin: 1.25rem 0 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; color: #555; }
+    p { margin-bottom: 0.75rem; }
+    ul { margin: 0.4rem 0 0.75rem 1.5rem; }
+    li { margin-bottom: 0.25rem; }
+    .todo { color: #aaa; font-style: italic; }
+    .tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; background: #eee; color: #555; padding: 0.15rem 0.4rem; border-radius: 2px; margin-left: 0.4rem; vertical-align: middle; }
+    .tag.locked { background: #dff0d8; color: #3c763d; }
+    .tag.tbd { background: #d9edf7; color: #31708f; }
+    .related { margin-top: 2.5rem; border-top: 1px solid #eee; padding-top: 1rem; font-size: 0.875rem; }
+    .related h2 { font-size: 0.9rem; border: none; text-transform: none; letter-spacing: 0; color: #1a1a1a; margin: 0 0 0.5rem; }
+    .related ul { margin-left: 1rem; }
+    footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.8rem; color: #888; }
+    footer a { color: #888; }
+  </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <p class="crumbs"><a href="../MASTER.html">MASTER</a> / <a href="index.html">COMBAT</a> / Combat overview</p>
-  <h1>Combat overview</h1>
-  <p class="lead">Tone, Fracture Charge, Teleattack, and how swap ties to marriage theme.</p>
+
+<header>
+  <a href="../MASTER.html">MASTER</a> / <a href="index.html">COMBAT</a> / Combat overview
 </header>
-<main id="main" class="content">
 
-<h2 id="tone">Combat tone rule</h2>
-<p>Heavy, grounded, <strong>uncomfortable</strong>. No flashy heroism. Hits are decisions, not celebration. If combat reads “fun-first,” story collapses.</p>
+<div class="layout">
+  <nav>
+    <div class="section">
+      <h2>Combat</h2>
+      <ul>
+        <li class="active"><a href="overview.html">Overview</a></li>
+        <li><a href="move-sets.html">Move sets</a></li>
+        <li><a href="encounter-philosophy.html">Encounter philosophy</a></li>
+        <li><a href="budokai-chase.html">Budokai chase</a></li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Sections</h2>
+      <ul>
+        <li><a href="../STORY/index.html">Story</a></li>
+        <li><a href="../CHARACTERS/index.html">Characters</a></li>
+        <li><a href="../PUZZLES/index.html">Puzzles</a></li>
+        <li><a href="../LEVEL_DESIGN/index.html">Level design</a></li>
+        <li><a href="../TRAVERSAL/index.html">Traversal</a></li>
+        <li><a href="../ART_VISUAL/index.html">Art &amp; visual</a></li>
+        <li><a href="../AUDIO/index.html">Audio</a></li>
+        <li><a href="../TECHNICAL/index.html">Technical</a></li>
+        <li><a href="../PRODUCTION/index.html">Production</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<h2 id="escalation">Escalation (Act I template)</h2>
-<p>Encounters evolve: <strong>confusion → resistance → intimacy (first Temporal) → moral pressure → organised defence</strong>. If two fights feel identical, cut or mutate one.</p>
+  <main id="main">
+    <h1>Combat overview</h1>
+    <p class="subtitle">Tone, core systems, and how the swap mechanic ties to theme.</p>
 
-<h2 id="integration">Emotional integration</h2>
-<p>Narrative is not layered on after — fights create guilt; memories contextualise guilt; choices weaponise guilt.</p>
+    <div class="callout">
+      <strong>Tone rule:</strong> Heavy, grounded, uncomfortable. No flashy heroism. Hits are decisions, not celebration. If combat reads "fun-first," the story collapses.
+    </div>
 
-<h2 id="fracture-charge">Fracture Charge &amp; forced swap</h2>
-<p>Shared resource builds in sustained combat. When full, <strong>mandatory swap</strong> — mid-animation, mid-risk. Player reads meter and <em>sets up</em> handoffs; cannot cancel the swap.</p>
-<p>Mother: faster, aggressive. Father: slower, deliberate; high payoff windows. Enemies differ by plane.</p>
-<p><strong>Signature fight:</strong> Act III dual-Temporal (one per plane) — swap becomes tool to interrupt charge cycles. See <a href="encounter-philosophy.html">encounter philosophy</a>.</p>
+    <h2>Emotional integration <span class="tag locked">locked</span></h2>
+    <p>Narrative is not layered on after combat — fights create guilt; ghost memories contextualise guilt; player choices weaponise guilt. Every encounter should serve this loop or be cut.</p>
 
-<h2 id="teleattack">Teleattack</h2>
-<p>Introduced Act I after first Temporal kill. Input after attack chain: swap to other parent <strong>continuing combo</strong>; disorienting camera ok. Bridges navigation swap to <strong>weaponised</strong> fracture. Stamina split across parents extends window.</p>
+    <h2>Fracture Charge &amp; forced swap <span class="tag locked">locked</span></h2>
+    <p>A shared resource that builds in sustained combat. When full, a <strong>mandatory swap</strong> triggers — mid-animation, mid-risk. The player cannot cancel it. Mastery is reading the meter and <em>setting up</em> handoffs before the swap forces them.</p>
+    <ul>
+      <li><strong>Mother:</strong> faster, aggressive. Enemies on her plane pressure differently.</li>
+      <li><strong>Father:</strong> slower, deliberate; high payoff windows. Enemies on his plane reward patience.</li>
+    </ul>
+    <p>The swap is the marriage made mechanical — two people who cannot be in the same place, forced to rely on each other mid-fight.</p>
+    <p><strong>Signature fight:</strong> Act III dual-Temporal (one per plane) — forced swap becomes the tool for interrupting enemy charge cycles. This is the mechanical thesis of the whole system. See <a href="encounter-philosophy.html">encounter philosophy</a>.</p>
 
-<h2 id="memory">Memory extraction</h2>
-<p>Only on <strong>Temporal</strong> kills. Parents blank; player bears weight. Feeds “Coalition was people.”</p>
+    <h3>Numbers / tuning <span class="tag tbd">TBD</span></h3>
+    <p class="todo">TBD — charge rate, threshold value, cooldown after swap, stamina interaction. Fill in when tuned.</p>
 
-<p>Cast hierarchy: <a href="../CHARACTERS/enemy-archetypes.html">enemy archetypes</a>. World math: <a href="../STORY/lore-world-rules.html">lore &amp; world rules</a>.</p>
+    <h2>Teleattack <span class="tag locked">locked</span></h2>
+    <p>Introduced in Act I after the first Temporal kill. Input after an attack chain: swap to the other parent <strong>continuing the combo</strong>. Camera disorientation is intentional. Bridges the navigation swap to a weaponised use of fracture. Stamina pools are separate per parent, extending the pressure window.</p>
 
-</main>
-<footer class="site-footer"><a href="../MASTER.html">← MASTER</a> · <a href="index.html">COMBAT index</a></footer>
-<script id="adot-doc-nav" data-depth="1" src="../nav.js"></script>
+    <h3>Input / timing details <span class="tag tbd">TBD</span></h3>
+    <p class="todo">TBD — exact input, combo chain length before it's available, window to execute, what happens if missed.</p>
+
+    <h2>Stamina <span class="tag tbd">TBD</span></h2>
+    <p class="todo">TBD — how stamina works per character, how it gates actions, recovery rate, interaction with Fracture Charge.</p>
+
+    <h2>Hit feel <span class="tag tbd">TBD</span></h2>
+    <p class="todo">TBD — hitstop values, camera shake, controller rumble, sound design targets. Should feel heavy and costly, never satisfying in a power-fantasy way.</p>
+
+    <h2>Memory extraction <span class="tag locked">locked</span></h2>
+    <p>Triggered only on <strong>Temporal kills</strong> — not deputized rank-and-file. Palm to forehead; ~15 seconds of translucent domestic life. Parents do not emote; the player carries the weight. Feeds the "Coalition was people" moral through-line.</p>
+    <p>See <a href="../CHARACTERS/enemy-archetypes.html">enemy archetypes</a> for full rules.</p>
+
+    <h2>Encounter escalation (Act I template) <span class="tag locked">locked</span></h2>
+    <p>Confusion → resistance → intimacy (first Temporal) → moral pressure → organised defence. If two fights feel identical, cut or mutate one.</p>
+    <p>Full per-act escalation in <a href="encounter-philosophy.html">encounter philosophy</a>.</p>
+
+    <div class="related">
+      <h2>Related</h2>
+      <ul>
+        <li><a href="move-sets.html">Move sets</a> — Per-character abilities and unlock timing</li>
+        <li><a href="encounter-philosophy.html">Encounter philosophy</a> — Pacing, act escalation, design rules</li>
+        <li><a href="budokai-chase.html">Budokai chase</a> — Chase mechanic lore consistency</li>
+        <li><a href="../CHARACTERS/enemy-archetypes.html">Enemy archetypes</a> — Temporal vs deputized; memory extraction rules</li>
+        <li><a href="../TECHNICAL/mechanic-unlock-ladder.html">Mechanic unlock ladder</a> — When each verb enters</li>
+      </ul>
+    </div>
+
+    <footer>
+      <a href="../MASTER.html">← MASTER</a> · <a href="index.html">COMBAT index</a>
+    </footer>
+  </main>
+</div>
+
 </body>
 </html>

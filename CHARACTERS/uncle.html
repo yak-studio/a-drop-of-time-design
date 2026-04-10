@@ -1,23 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Uncle | A Drop of Time</title>
-<link rel="stylesheet" href="../styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Uncle | A Drop of Time</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; background: #fff; color: #1a1a1a; }
+    a { color: #1a1a1a; }
+    a:hover { text-decoration: none; }
+    header { padding: 0.5rem 1.5rem; border-bottom: 1px solid #ddd; font-size: 0.85rem; color: #555; }
+    header a { color: #555; text-decoration: none; }
+    header a:hover { text-decoration: underline; }
+    .layout { display: flex; min-height: 100vh; }
+    nav { width: 220px; flex-shrink: 0; border-right: 1px solid #ddd; padding: 1.5rem 1rem; font-size: 0.85rem; }
+    nav h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 0.5rem; }
+    nav ul { list-style: none; }
+    nav ul li { margin-bottom: 0.25rem; }
+    nav ul li a { text-decoration: none; color: #333; }
+    nav ul li a:hover { text-decoration: underline; }
+    nav ul li.active a { font-weight: 600; color: #000; }
+    nav .section { margin-bottom: 1.25rem; }
+    main { flex: 1; padding: 2rem 2.5rem; max-width: 860px; }
+    h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .subtitle { color: #555; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .callout { border-left: 3px solid #aaa; padding: 0.6rem 1rem; background: #f8f8f8; font-size: 0.875rem; color: #444; margin-bottom: 1.75rem; }
+    .callout strong { color: #111; }
+    h2 { font-size: 1.15rem; font-weight: 700; margin: 2rem 0 0.6rem; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; }
+    h3 { font-size: 0.95rem; font-weight: 600; margin: 1.25rem 0 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; color: #555; }
+    p { margin-bottom: 0.75rem; }
+    ul { margin: 0.4rem 0 0.75rem 1.5rem; }
+    li { margin-bottom: 0.2rem; }
+    .todo { color: #aaa; font-style: italic; }
+    .tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; background: #fcf8e3; color: #8a6d3b; padding: 0.15rem 0.4rem; border-radius: 2px; margin-left: 0.4rem; vertical-align: middle; }
+    .tag.locked { background: #dff0d8; color: #3c763d; }
+    .tag.open { background: #d9edf7; color: #31708f; }
+    .related { margin-top: 2.5rem; border-top: 1px solid #eee; padding-top: 1rem; font-size: 0.875rem; }
+    .related h2 { font-size: 0.9rem; border: none; text-transform: none; letter-spacing: 0; color: #1a1a1a; margin: 0 0 0.5rem; }
+    .related ul { margin-left: 1rem; }
+    footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.8rem; color: #888; }
+    footer a { color: #888; }
+  </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <p class="crumbs"><a href="../MASTER.html">MASTER</a> / <a href="../CHARACTERS/index.html">CHARACTERS</a> / The Uncle</p>
-  <h1>The Uncle</h1>
-  <p class="lead">Dedicated Uncle doc.</p>
+
+<header>
+  <a href="../MASTER.html">MASTER</a> / <a href="index.html">CHARACTERS</a> / The Uncle
 </header>
-<main id="main" class="content">
-<p class="tag draft">Stub — replace with canon.</p>
-<p>Add content here. For images, add a folder such as <code>../images/</code> and reference with relative URLs.</p>
-</main>
-<footer class="site-footer"><a href="../MASTER.html">← MASTER</a> · <a href="../CHARACTERS/index.html">CHARACTERS index</a></footer>
-<script id="adot-doc-nav" data-depth="1" src="../nav.js"></script>
+
+<div class="layout">
+  <nav>
+    <div class="section">
+      <h2>Characters</h2>
+      <ul>
+        <li><a href="protagonists.html">Protagonists</a></li>
+        <li class="active"><a href="uncle.html">The Uncle</a></li>
+        <li><a href="npcs.html">NPCs</a></li>
+        <li><a href="enemy-archetypes.html">Enemy archetypes</a></li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Sections</h2>
+      <ul>
+        <li><a href="../STORY/index.html">Story</a></li>
+        <li><a href="../COMBAT/index.html">Combat</a></li>
+        <li><a href="../PUZZLES/index.html">Puzzles</a></li>
+        <li><a href="../LEVEL_DESIGN/index.html">Level design</a></li>
+        <li><a href="../TRAVERSAL/index.html">Traversal</a></li>
+        <li><a href="../ART_VISUAL/index.html">Art &amp; visual</a></li>
+        <li><a href="../AUDIO/index.html">Audio</a></li>
+        <li><a href="../TECHNICAL/index.html">Technical</a></li>
+        <li><a href="../PRODUCTION/index.html">Production</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <h1>The Uncle</h1>
+    <p class="subtitle">The man who killed her. Family, not stranger. Translator at the summit.</p>
+
+    <div class="callout">
+      <strong>Motivation is locked.</strong> Appearance, presence, and summit behaviour need filling in. Locked beats pre-filled from <a href="../STORY/plot-and-acts.html">plot &amp; acts</a>.
+    </div>
+
+    <h2>Who he is</h2>
+
+    <h3>One-line</h3>
+    <p class="todo">TBD — who is he in one sentence?</p>
+
+    <h3>Appearance</h3>
+    <p class="todo">TBD — physical description, age, silhouette. How does he carry himself?</p>
+
+    <h3>Temporal status</h3>
+    <p>He is a Temporal — but he never fractured into his own plane the way others did. He retains Core access and an intact plane, which lets him stand where all three family planes meet. This is why he can serve as <strong>translator</strong> at the summit — relaying words between parents who cannot speak across the gap.</p>
+    <p class="todo">TBD — confirm whether his intact plane is notable / unusual among Temporals, or just how he specifically is.</p>
+
+    <h2>Why he did it <span class="tag locked">locked</span></h2>
+    <p>The Temporals collectively decided the daughter had to die — she was an unintentional 13th draw, and her existence was costing them their power and immortality. The Uncle volunteered to be the one to carry it out.</p>
+    <p>He loved her like his own child. He could not stand the thought of a stranger doing it. He hated himself for agreeing, and more for volunteering.</p>
+    <p>He also told himself — or genuinely believed — that the parents would never truly accept losing her. That their plan to make her mortal at the Convergence was a hope they would abandon at the final moment. He acted before they could prove him right or wrong.</p>
+    <p>The cruelest fact: the family was already at Mount Cook specifically because they thought they had a solution. They were one day away. He moved first.</p>
+    <p>Whether his doubt about the parents was truth or self-justification is never resolved.</p>
+
+    <h2>Presence across the game</h2>
+
+    <h3>Prologue</h3>
+    <p>Arrives at the campfire. Weeps. Apologises. Kills her gently. <span class="tag">fill in</span> — does he hold himself together until the moment, or is he already broken when he arrives?</p>
+
+    <h3>During the climb</h3>
+    <p>His traces appear in Act II — campfire, cairn, a broken-then-mended tool. Reads to the parents as pursuit. The truth is compulsion and unravelling.</p>
+    <p class="todo">TBD — is he physically visible during the climb at any point before the summit, or only as traces?</p>
+
+    <h3>Summit — Act III</h3>
+    <p>Sitting. No plan. He is the translator for the last family words — the only one who can relay speech between the three planes at the gate.</p>
+    <p>Summit argument: Father — <em>"What if she doesn't want to come back?"</em> Mother — <em>"She is seven years old. She doesn't get to choose."</em> Uncle relays between them; his own position is <span class="tag">TBD</span>.</p>
+
+    <h3>Sacrifice attempt <span class="tag open">working idea</span></h3>
+    <p>Before the exits begin, he may attempt to sacrifice himself — offering his plane to alter the exit math and save the daughter. The attempt kills him regardless of outcome. Purpose: inject uncertainty into whether any sacrifice will work. See <a href="../PRODUCTION/open-decisions-log.html">open decisions</a>.</p>
+
+    <h2>Function vs redemption</h2>
+    <p>His role at the summit is <strong>communication</strong>, not redemption. He does not get a clean arc. Whether the player — or the parents — forgive him is not the game's concern. He is there because he is the only one who can stand in all three planes at once, and because he cannot leave.</p>
+
+    <h2>Notes</h2>
+    <p class="todo">TBD — anything else about his feel, voice, how he should read to the player.</p>
+
+    <div class="related">
+      <h2>Related</h2>
+      <ul>
+        <li><a href="../STORY/lore-world-rules.html">Lore &amp; world rules</a> — Uncle as translator; plane mechanics</li>
+        <li><a href="../STORY/plot-and-acts.html">Plot &amp; acts</a> — Prologue, Act II traces, summit sequence</li>
+        <li><a href="../STORY/endings.html">Endings</a> — Uncle plane offer; summit exit math</li>
+        <li><a href="protagonists.html">Protagonists</a> — Family he destroyed</li>
+        <li><a href="../PRODUCTION/open-decisions-log.html">Open decisions</a> — Sacrifice working idea</li>
+      </ul>
+    </div>
+
+    <footer>
+      <a href="../MASTER.html">← MASTER</a> · <a href="index.html">CHARACTERS index</a>
+    </footer>
+  </main>
+</div>
+
 </body>
 </html>

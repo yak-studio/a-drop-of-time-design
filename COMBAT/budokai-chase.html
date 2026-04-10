@@ -1,23 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Budokai chase | A Drop of Time</title>
-<link rel="stylesheet" href="../styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Budokai chase | A Drop of Time</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; background: #fff; color: #1a1a1a; }
+    a { color: #1a1a1a; }
+    a:hover { text-decoration: none; }
+    header { padding: 0.5rem 1.5rem; border-bottom: 1px solid #ddd; font-size: 0.85rem; color: #555; }
+    header a { color: #555; text-decoration: none; }
+    header a:hover { text-decoration: underline; }
+    .layout { display: flex; min-height: 100vh; }
+    nav { width: 220px; flex-shrink: 0; border-right: 1px solid #ddd; padding: 1.5rem 1rem; font-size: 0.85rem; }
+    nav h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 0.5rem; }
+    nav ul { list-style: none; }
+    nav ul li { margin-bottom: 0.25rem; }
+    nav ul li a { text-decoration: none; color: #333; }
+    nav ul li a:hover { text-decoration: underline; }
+    nav ul li.active a { font-weight: 600; color: #000; }
+    nav .section { margin-bottom: 1.25rem; }
+    main { flex: 1; padding: 2rem 2.5rem; max-width: 860px; }
+    h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .subtitle { color: #555; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .callout { border-left: 3px solid #aaa; padding: 0.6rem 1rem; background: #f8f8f8; font-size: 0.875rem; color: #444; margin-bottom: 1.75rem; }
+    .callout strong { color: #111; }
+    h2 { font-size: 1.15rem; font-weight: 700; margin: 2rem 0 0.6rem; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; }
+    h3 { font-size: 0.95rem; font-weight: 600; margin: 1.25rem 0 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; color: #555; }
+    p { margin-bottom: 0.75rem; }
+    ul { margin: 0.4rem 0 0.75rem 1.5rem; }
+    li { margin-bottom: 0.25rem; }
+    .todo { color: #aaa; font-style: italic; }
+    .tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; background: #eee; color: #555; padding: 0.15rem 0.4rem; border-radius: 2px; margin-left: 0.4rem; vertical-align: middle; }
+    .tag.locked { background: #dff0d8; color: #3c763d; }
+    .tag.tbd { background: #d9edf7; color: #31708f; }
+    .related { margin-top: 2.5rem; border-top: 1px solid #eee; padding-top: 1rem; font-size: 0.875rem; }
+    .related h2 { font-size: 0.9rem; border: none; text-transform: none; letter-spacing: 0; color: #1a1a1a; margin: 0 0 0.5rem; }
+    .related ul { margin-left: 1rem; }
+    footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.8rem; color: #888; }
+    footer a { color: #888; }
+  </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <p class="crumbs"><a href="../MASTER.html">MASTER</a> / <a href="../COMBAT/index.html">COMBAT</a> / Budokai chase</p>
-  <h1>Budokai chase</h1>
-  <p class="lead">Narrative chase mechanic.</p>
+
+<header>
+  <a href="../MASTER.html">MASTER</a> / <a href="index.html">COMBAT</a> / Budokai chase
 </header>
-<main id="main" class="content">
-<p class="tag draft">Stub — replace with canon.</p>
-<p>Add content here. For images, add a folder such as <code>../images/</code> and reference with relative URLs.</p>
-</main>
-<footer class="site-footer"><a href="../MASTER.html">← MASTER</a> · <a href="../COMBAT/index.html">COMBAT index</a></footer>
-<script id="adot-doc-nav" data-depth="1" src="../nav.js"></script>
+
+<div class="layout">
+  <nav>
+    <div class="section">
+      <h2>Combat</h2>
+      <ul>
+        <li><a href="overview.html">Overview</a></li>
+        <li><a href="move-sets.html">Move sets</a></li>
+        <li><a href="encounter-philosophy.html">Encounter philosophy</a></li>
+        <li class="active"><a href="budokai-chase.html">Budokai chase</a></li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Sections</h2>
+      <ul>
+        <li><a href="../STORY/index.html">Story</a></li>
+        <li><a href="../CHARACTERS/index.html">Characters</a></li>
+        <li><a href="../PUZZLES/index.html">Puzzles</a></li>
+        <li><a href="../LEVEL_DESIGN/index.html">Level design</a></li>
+        <li><a href="../TRAVERSAL/index.html">Traversal</a></li>
+        <li><a href="../ART_VISUAL/index.html">Art &amp; visual</a></li>
+        <li><a href="../AUDIO/index.html">Audio</a></li>
+        <li><a href="../TECHNICAL/index.html">Technical</a></li>
+        <li><a href="../PRODUCTION/index.html">Production</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <h1>Budokai chase</h1>
+    <p class="subtitle">The chase mechanic. Lore-consistent, narratively grounded. Locked concept; details TBD.</p>
+
+    <div class="callout">
+      <strong>Consistency rule:</strong> Whatever this mechanic does, it must remain consistent with plane physics and the traversal rules. Do not introduce new lore to justify it — derive it from what already exists.
+    </div>
+
+    <h2>What it is <span class="tag tbd">TBD</span></h2>
+    <p class="todo">TBD — describe the Budokai chase mechanic. What triggers it? Who is chasing whom? Is the player chasing or being chased, or both at different points?</p>
+
+    <h2>Lore grounding <span class="tag tbd">TBD</span></h2>
+    <p class="todo">TBD — how does this mechanic connect to the plane physics? Swapping mid-chase? Teleport used offensively or evasively? Must not contradict established lore.</p>
+
+    <h2>Where it appears <span class="tag tbd">TBD</span></h2>
+    <p class="todo">TBD — which act(s)? Which specific encounters or set-pieces use the chase? Is it a recurring type or a one-off?</p>
+
+    <h2>Player experience <span class="tag tbd">TBD</span></h2>
+    <p class="todo">TBD — what does it feel like to play? What is the emotional register — panic, exhilaration, desperation? Must match the game's uncomfortable tone, not read as action-game spectacle.</p>
+
+    <h2>Mechanical rules <span class="tag tbd">TBD</span></h2>
+    <p class="todo">TBD — inputs, camera, speed, failure states, how swap/teleport interact with the chase.</p>
+
+    <h2>Constraints (do not violate)</h2>
+    <ul>
+      <li>Must be consistent with <a href="../STORY/lore-world-rules.html">plane physics and lore</a>.</li>
+      <li>Must not introduce a "fun" register that undercuts the game's tone.</li>
+      <li>Must not require new traversal verbs not already in the <a href="../TECHNICAL/mechanic-unlock-ladder.html">mechanic unlock ladder</a>.</li>
+    </ul>
+
+    <h2>Notes</h2>
+    <p class="todo">TBD — anything else. Origin of the "Budokai" name as internal reference, if worth documenting.</p>
+
+    <div class="related">
+      <h2>Related</h2>
+      <ul>
+        <li><a href="overview.html">Combat overview</a> — Core tone and systems</li>
+        <li><a href="encounter-philosophy.html">Encounter philosophy</a> — Where chase fits in encounter pacing</li>
+        <li><a href="../STORY/lore-world-rules.html">Lore &amp; world rules</a> — Plane physics the mechanic must respect</li>
+        <li><a href="../TRAVERSAL/movement-and-states.html">Movement &amp; states</a> — Traversal verbs available</li>
+        <li><a href="../TECHNICAL/mechanic-unlock-ladder.html">Mechanic unlock ladder</a> — Verb availability per act</li>
+      </ul>
+    </div>
+
+    <footer>
+      <a href="../MASTER.html">← MASTER</a> · <a href="index.html">COMBAT index</a>
+    </footer>
+  </main>
+</div>
+
 </body>
 </html>
