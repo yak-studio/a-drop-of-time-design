@@ -1,82 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plot & acts | A Drop of Time</title>
-<link rel="stylesheet" href="../styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plot & acts | A Drop of Time</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; background: #fff; color: #1a1a1a; }
+    a { color: #1a1a1a; }
+    a:hover { text-decoration: none; }
+    header { padding: 0.5rem 1.5rem; border-bottom: 1px solid #ddd; font-size: 0.85rem; color: #555; }
+    header a { color: #555; text-decoration: none; }
+    header a:hover { text-decoration: underline; }
+    .layout { display: flex; min-height: 100vh; }
+    nav { width: 220px; flex-shrink: 0; border-right: 1px solid #ddd; padding: 1.5rem 1rem; font-size: 0.85rem; }
+    nav h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 0.5rem; }
+    nav ul { list-style: none; }
+    nav ul li { margin-bottom: 0.25rem; }
+    nav ul li a { text-decoration: none; color: #333; }
+    nav ul li a:hover { text-decoration: underline; }
+    nav ul li.active a { font-weight: 600; color: #000; }
+    nav .section { margin-bottom: 1.25rem; }
+    main { flex: 1; padding: 2rem 2.5rem; max-width: 860px; }
+    h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .subtitle { color: #555; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .callout { border-left: 3px solid #aaa; padding: 0.6rem 1rem; background: #f8f8f8; font-size: 0.875rem; color: #444; margin-bottom: 1.75rem; }
+    .callout strong { color: #111; }
+    .callout.warn { border-color: #e8a838; background: #fffbf0; }
+    h2 { font-size: 1.15rem; font-weight: 700; margin: 2rem 0 0.6rem; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; }
+    h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.4rem; }
+    p { margin-bottom: 0.75rem; }
+    ul, ol { margin: 0.5rem 0 0.75rem 1.5rem; }
+    li { margin-bottom: 0.25rem; }
+    .tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; background: #eee; color: #555; padding: 0.15rem 0.4rem; border-radius: 2px; margin-left: 0.4rem; vertical-align: middle; }
+    .tag.locked { background: #dff0d8; color: #3c763d; }
+    .tag.open { background: #fcf8e3; color: #8a6d3b; }
+    .tag.cut { background: #f2dede; color: #a94442; }
+    .tag.tbd { background: #d9edf7; color: #31708f; }
+    em.dialogue { font-style: italic; color: #444; }
+    .related { margin-top: 2.5rem; border-top: 1px solid #eee; padding-top: 1rem; font-size: 0.875rem; }
+    .related h2 { font-size: 0.9rem; border: none; margin: 0 0 0.5rem; }
+    .related ul { margin-left: 1rem; }
+    footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.8rem; color: #888; }
+    footer a { color: #888; }
+  </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <p class="crumbs"><a href="../MASTER.html">MASTER</a> / <a href="index.html">STORY</a> / Plot &amp; acts</p>
-  <h1>Plot &amp; acts</h1>
-  <p class="lead">Story spine from prologue through summit. Detailed encounter markers live in <a href="../LEVEL_DESIGN/act-i-forest-horizontal.html">LEVEL_DESIGN</a> act pages.</p>
+
+<header>
+  <a href="../MASTER.html">MASTER</a> / <a href="index.html">STORY</a> / Plot &amp; acts
 </header>
-<main id="main" class="content">
 
-<p class="tag draft">Canon — dialogue candidates marked where workshop needed.</p>
+<div class="layout">
+  <nav>
+    <div class="section">
+      <h2>Story</h2>
+      <ul>
+        <li><a href="lore-world-rules.html">Lore &amp; world rules</a></li>
+        <li class="active"><a href="plot-and-acts.html">Plot &amp; acts</a></li>
+        <li><a href="ritual.html">The ritual</a></li>
+        <li><a href="dialogue-per-level.html">Dialogue per level</a></li>
+        <li><a href="endings.html">Endings</a></li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Sections</h2>
+      <ul>
+        <li><a href="../CHARACTERS/index.html">Characters</a></li>
+        <li><a href="../COMBAT/index.html">Combat</a></li>
+        <li><a href="../PUZZLES/index.html">Puzzles</a></li>
+        <li><a href="../LEVEL_DESIGN/index.html">Level design</a></li>
+        <li><a href="../TRAVERSAL/index.html">Traversal</a></li>
+        <li><a href="../ART_VISUAL/index.html">Art &amp; visual</a></li>
+        <li><a href="../AUDIO/index.html">Audio</a></li>
+        <li><a href="../TECHNICAL/index.html">Technical</a></li>
+        <li><a href="../PRODUCTION/index.html">Production</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<h2 id="north-star">Thematic north star (reference)</h2>
-<p>Lessons carried from <em>The Road</em>–style storytelling: relentless forward motion; love as destructive force; sparse dialogue; indifferent environment; the climb’s exhaustion mirrors grief. See <a href="../LEVEL_DESIGN/four-beat-rhythm.html#mountain-rule">Mountain Rule</a> for environmental witness.</p>
+  <main id="main">
+    <h1>Plot &amp; acts</h1>
+    <p class="subtitle">Story spine from prologue through summit. Encounter markers live in <a href="../LEVEL_DESIGN/act-i-forest-horizontal.html">LEVEL DESIGN</a> act pages.</p>
 
-<h2 id="pillars">Game pillars (loop)</h2>
-<p><strong>Combat</strong> — heavy, grounded, uncomfortable; deputized masses + rare Temporals.<br>
-<strong>Puzzles</strong> — fracture logic across planes.<br>
-<strong>Traversal</strong> — tactile, exhausting ascent.<br>
-<strong>Seamlessness</strong> — one continuous climb; interludes as controlled fades.</p>
+    <div class="callout">
+      <strong>Canon.</strong> Dialogue candidates marked where workshop is needed. See <a href="../PRODUCTION/open-decisions-log.html">open decisions</a> for unresolved beats.
+    </div>
 
-<h2 id="fracture-swap">Fracture Swap &amp; Fracture Charge <span class="tag locked">design spine</span></h2>
-<p>Tab swap is the marriage made mechanical. <strong>Fracture Charge</strong> fills in combat; at threshold, <strong>forced swap</strong> — player prepares, cannot cancel. Enemies differ per plane; mastery is setting up handoffs. Mid–late Act II dual-Temporal fight is the “click”: involuntary swap becomes precision tool (<a href="../COMBAT/overview.html">combat overview</a>).</p>
-<p><strong>Teleattack</strong> (Act I, after first Temporal kill): attack chain → teleattack input → swap to other parent mid-combo; separate stamina pools extend pressure. Seed of charge fantasy; disorienting on purpose.</p>
+    <h2>Thematic north star</h2>
+    <p>Lessons from <em>The Road</em>-style storytelling: relentless forward motion; love as destructive force; sparse dialogue; indifferent environment; the climb's exhaustion mirrors grief. See <a href="../LEVEL_DESIGN/four-beat-rhythm.html#mountain-rule">Mountain Rule</a> for environmental witness.</p>
 
-<h2 id="prologue">Prologue — orchard run</h2>
-<p>Warm lowland forest, family at campfire. Daughter traversal: joy, specificity. <strong>Plant</strong> mismatched socks (“they make her strong”), lucky stone (smooth dark grey), off-key hum, one small petty act (e.g. bird / apple) without commentary — she was a child, not a symbol.</p>
-<p>Uncle arrives, weeps, apologises, kills her gently; apple rolls. Hold on body; world <strong>fractures</strong>; parents tumble into split planes. Title: <em>A Drop of Time</em>.</p>
+    <h2>Game pillars (loop)</h2>
+    <ul>
+      <li><strong>Combat</strong> — heavy, grounded, uncomfortable; deputized masses + rare Temporals.</li>
+      <li><strong>Puzzles</strong> — fracture logic across planes.</li>
+      <li><strong>Traversal</strong> — tactile, exhausting ascent.</li>
+      <li><strong>Seamlessness</strong> — one continuous climb; interludes as controlled fades.</li>
+    </ul>
 
-<h2 id="graveyard">Prologue coda — graveyard → Act I</h2>
-<p>Valley cold; hand-built cairn. Lucky stone on cairn — <strong>neither parent placed it, or both did in the same moment</strong>; ambiguity never resolved.</p>
-<p>Mother looks to mountain: <em>“We were supposed to save her up there.”</em> Father leaves something at base of cairn; <em>“Then we climb.”</em></p>
+    <h2>Fracture Swap &amp; Fracture Charge design spine</h2>
+    <p>Tab swap is the marriage made mechanical. <strong>Fracture Charge</strong> fills in combat; at threshold, forced swap — player prepares, cannot cancel. Enemies differ per plane; mastery is setting up handoffs. Mid–late Act II dual-Temporal fight is the "click": involuntary swap becomes precision tool. See <a href="../COMBAT/overview.html">combat overview</a>.</p>
+    <p><strong>Teleattack</strong> (Act I, after first Temporal kill): attack chain → teleattack input → swap to other parent mid-combo; separate stamina pools extend pressure. Seed of charge fantasy; disorienting on purpose.</p>
 
-<h2 id="act-i">Act I — The Forest · <em>Who</em></h2>
-<p><strong>Parents know:</strong> daughter dead; fracture; killer unknown (assume stranger / Temporal). <strong>Do not know:</strong> Uncle; Warden’s complicity; plan was one day from working.</p>
-<p><strong>Intent:</strong> teach verbs through rune stones and traversal; dual-plane swap; combat as ugly necessity; bond to marriage before Warden detonates.</p>
-<p><strong>Non-negotiable warmth:</strong> “Marriage” beat — trivial cross-plane bickering before first blood so Warden naming lands on <em>people</em>, not archetypes.</p>
-<p><strong>Divergence:</strong> Mother <em>“We fix this.”</em> Father <em>“We measure the cost.”</em> Spatial fork for 2D may need redesign; emotional beat locked.</p>
-<p id="warden"><strong>Warden sequence:</strong> not a boss fight — a collision. She names the <strong>Uncle</strong>. Silence is the detonation. Then <strong>one-day-away</strong>: she knew the convergence plan, told him; he thought no parent would pay the cost; she surrendered the daughter’s location. <strong>“I was right”</strong> about the drain + complicit in destroying the cure. <strong>Revival not stated here.</strong></p>
-<p><strong>Warden choice:</strong> let her finish vs stop her — Mother’s vengeance vs Father’s mercy framing, not moral UI.</p>
-<p><strong>Self-teleport unlock:</strong> her plane collapses either way (kill or relinquish); energy returns to Core — unlocks <strong>self-teleport</strong> (puzzle-only, taught Act II).</p>
-<p>Act closes: temporal stutter, planes slightly out of sync → <strong>Interlude I</strong>.</p>
+    <h2>Prologue — orchard run</h2>
+    <p>Warm lowland forest, family at campfire. Daughter traversal: joy, specificity. <strong>Plant:</strong> mismatched socks ("they make her strong"), lucky stone (smooth, dark grey), off-key hum, one small petty act (e.g. bird / apple) without commentary — she was a child, not a symbol.</p>
+    <p>Uncle arrives, weeps, apologises, kills her gently. Apple rolls. Hold on her. World <strong>fractures</strong> — pieces fall like shards of glass, and behind each shard a plane is briefly visible before the screen fades to black. Title: <em>A Drop of Time</em>.</p>
+    <p>The parents are not shown in the fracture shot. When Act I opens, they are already separated — each on their own plane — at the first ritual.</p>
 
-<h2 id="interlude-i">Interlude I — daughter · confusion</h2>
-<p>Walking-sim / light puzzle; she does not know she’s dead; sees ghost of killing; tries to run to parents; space resists. <strong>Companion</strong> present — quiet, ancient, not explanatory. <strong>Ripple:</strong> possible fleeting handprint / image on both parent planes tying interlude to live climb.</p>
+    <h2>Act I — The Forest · <em>Who</em></h2>
+    <p><strong>Opens with:</strong> <a href="ritual.html">The ritual</a> (first instance). Gameplay begins on Father's plane.</p>
+    <p><strong>Parents know:</strong> daughter dead; fracture; killer unknown (assume stranger / Temporal). <strong>Do not know:</strong> Uncle; Warden's complicity; plan was one day from working.</p>
+    <p><strong>Intent:</strong> teach verbs through rune stones and traversal; dual-plane swap; combat as ugly necessity; bond to marriage before the Warden detonates it.</p>
 
-<h2 id="act-ii">Act II — Moraine · <em>How</em></h2>
-<p><strong>New verbs:</strong> item teleport (early); self-teleport (mid, after Warden unlock). Graduation puzzle combines both.</p>
-<p><strong>Uncle traces:</strong> campfire, cairn, broken mended tool — read as pursuit; truth is compulsion / unraveling.</p>
-<p><strong>Revival reveal</strong> via Temporal ghost memory — Convergence can bring her back; hope worse than grief. Father: <em>“How many did we kill to get here?”</em> Mother accelerates.</p>
-<p><strong>Father’s breaking point:</strong> mechanical slowdown / refusal to move; Mother pulls him with <strong>mismatched-socks</strong> memory.</p>
-<p><strong>Asymmetric grief</strong> — Mother sees the fearless explorer; Father the quiet, dependent child. <em>Father:</em> “You always wanted her to be braver than she was.” <em>Mother:</em> “And you always wanted to protect her.” <em>Father:</em> “Which of us truly saw her, then?” Question hangs; paths diverge in layout. <strong>Mother’s hesitation</strong> over unconscious deputized — once, never referenced again.</p>
-<p><strong>Mountain rule</strong> (Father’s plane): ice bridge, glacier scale, no music. <strong>Humming</strong> beat locked — daughter’s tune; Father stops; no dialogue.</p>
-<p>Fade → <strong>Interlude II</strong>.</p>
+    <h3>Non-negotiable warmth</h3>
+    <p>"Marriage" beat — trivial cross-plane bickering before first blood so Warden naming lands on <em>people</em>, not archetypes.</p>
 
-<h2 id="interlude-ii">Interlude II — daughter · understanding</h2>
-<p>She untangles tethers; sees parents as they are now; understands cost of return. <strong>Lets go</strong> — choice to die for them. <strong>Companion</strong> states costs factually. <strong>Irony lock:</strong> parents never see this.</p>
+    <h3>Divergence</h3>
+    <p>Mother: <em class="dialogue">"We fix this."</em> Father: <em class="dialogue">"We measure the cost."</em> Spatial fork for 2D may need redesign; emotional beat locked.</p>
 
-<h2 id="act-iii">Act III — Death zone · <em>What now</em></h2>
-<p>No new systems — mastery. Silence increases toward summit.</p>
-<p><strong>Dual-Temporal fight</strong> — thesis for Fracture Charge. <strong>Engineer at Core Gate</strong> — Mother forces hand to stone; Father witnesses; <em>“Keep moving.”</em> <strong>Father’s moral paralysis</strong> later; Mother coerces. <strong>Father’s line:</strong> <em>“She would have hated what we’ve become.”</em></p>
-<p><strong>Uncle at Convergence:</strong> sitting, no plan; translator for last family words. Summit argument hinge: Father <em>“What if she doesn’t want to come back?”</em> (unknowing truth); Mother <em>“She is seven years old. She doesn’t get to choose.”</em> Workshop dialogue but function locked.</p>
-<p>See <a href="endings.html">endings</a> for exit-order outcomes.</p>
+    <h3>Warden sequence <span class="tag locked">locked</span></h3>
+    <p>Not a boss fight — a collision. She knows the Convergence can bring the daughter back and is trying to stop the parents reaching the summit to do it. She does <strong>not</strong> share this reason.</p>
+    <p><strong>Player choice — execute or spare:</strong></p>
+    <ul>
+      <li><strong>Execute:</strong> she agreed to it and will not fight back. Ghost memory extraction (Temporal kill) — parents <em>see</em> the Uncle in her memory. Plane collapses.</li>
+      <li><strong>Spare:</strong> she tells them directly — names the Uncle, reveals the one-day-away plan. Plane collapses regardless (she relinquishes it).</li>
+    </ul>
+    <p>Either path: Uncle is named. Silence is the detonation. <strong>Revival is not stated here</strong> — parents learn that later.</p>
+    <p>Self-teleport unlocks from her plane's collapse (puzzle-only verb, taught in Act II).</p>
+    <p>Act closes: temporal stutter, planes slightly out of sync → <strong>Interlude I</strong>.</p>
 
-<h2 id="contradiction">Contradiction rule <span class="tag locked">v4.1</span></h2>
-<p>Each lead contradicts their theme <strong>once per act</strong> without underlining: Mother hesitates; Father takes reckless shortcut (Act I); daughter’s petty beat in prologue; etc.</p>
+    <h2>Interlude I — daughter · confusion</h2>
+    <p>Walking-sim / light puzzle. She does not know she is dead. Sees ghost of the killing; tries to run to parents; space resists. <strong>Companion</strong> present — quiet, ancient, not explanatory. Possible fleeting handprint or image visible on both parent planes, tying the interlude to the live climb.</p>
 
-<h2 id="changelog-ref">Bible changelog snapshot (v4.3 → v4.4)</h2>
-<p>Exit ordering + siphoning governs endings; three-plane TAB at summit; Companion formalised; Uncle translator + plane offer; ending A/B/C redesigned around plane collapse math. Earlier v4.2→v4.3: every Temporal a plane; Convergence as place; one-day-away; self-teleport from Warden.</p>
+    <h2>Act II — Moraine · <em>How</em></h2>
+    <p><strong>Opens with:</strong> <a href="ritual.html">The ritual</a> (second instance). Fire larger; posture changed; different items.</p>
+    <p><strong>New verbs:</strong> item teleport (early); self-teleport (mid, after Warden unlock). Graduation puzzle combines both.</p>
 
-</main>
-<footer class="site-footer"><a href="../MASTER.html">← MASTER</a> · <a href="index.html">STORY index</a></footer>
-<script id="adot-doc-nav" data-depth="1" src="../nav.js"></script>
+    <h3>Uncle traces</h3>
+    <p>Campfire, cairn, broken-then-mended tool — reads as pursuit; truth is compulsion and unravelling.</p>
+
+    <h3>Revival reveal <span class="tag locked">locked</span></h3>
+    <p>Via <strong>ghost memory</strong> from a Temporal kill: the Convergence can bring her back. Hope worse than grief. Father: <em class="dialogue">"How many did we kill to get here?"</em> Mother accelerates. This is the Act II finale beat before Interlude II.</p>
+
+    <h3>Father's breaking point</h3>
+    <p>Mechanical slowdown / refusal to move. Mother pulls him with the <strong>mismatched-socks memory</strong>.</p>
+
+    <h3>Asymmetric grief</h3>
+    <p>Mother sees the fearless explorer; Father the quiet, dependent child.</p>
+    <p>Father: <em class="dialogue">"You always wanted her to be braver than she was."</em><br>
+    Mother: <em class="dialogue">"And you always wanted to protect her."</em><br>
+    Father: <em class="dialogue">"Which of us truly saw her, then?"</em><br>
+    Question hangs; paths diverge in layout.</p>
+    <p><strong>Mother's hesitation</strong> over an unconscious deputized — once, never referenced again.</p>
+
+    <h3>Mountain rule (Father's plane)</h3>
+    <p>Ice bridge, glacier scale, no music. <strong>Humming beat locked</strong> — daughter's tune; Father stops; no dialogue.</p>
+
+    <p>Fade → <strong>Interlude II</strong>.</p>
+
+    <h2>Interlude II — daughter · understanding</h2>
+    <p>She untangles tethers; sees parents as they are now; understands the cost of return. <strong>Lets go</strong> — chooses to die for them. Companion states costs factually. <strong>Irony lock:</strong> parents never see this.</p>
+
+    <h2>Act III — Death zone · <em>What now</em></h2>
+    <p><strong>Opens with:</strong> <a href="ritual.html">The ritual</a> (third instance). Smallest fire; hollowed posture.</p>
+    <p>No new systems — mastery. Silence increases toward summit.</p>
+
+    <h3>Dual-Temporal fight</h3>
+    <p>Thesis for Fracture Charge mastery — the system's involuntary swap becomes intentional choreography.</p>
+
+    <h3>Act III story beat <span class="tag tbd">TBD</span></h3>
+    <p>Space held for an unresolved story beat between the dual-Temporal fight and the Uncle/Convergence scene. Not yet designed.</p>
+
+    <h3>Uncle at Convergence</h3>
+    <p>Sitting, no plan. Translator for last family words. Summit argument hinge:</p>
+    <p>Father: <em class="dialogue">"What if she doesn't want to come back?"</em> (unknowing truth.)<br>
+    Mother: <em class="dialogue">"She is seven years old. She doesn't get to choose."</em></p>
+    <p>Dialogue workshop needed — function locked.</p>
+    <p>Uncle may attempt to sacrifice himself to save the daughter before the exits begin — working idea; kills him regardless of outcome; purpose is to inject uncertainty into whether sacrifice will work at all. See <a href="../PRODUCTION/open-decisions-log.html">open decisions</a>.</p>
+
+    <p>See <a href="endings.html">endings</a> for exit-order outcomes.</p>
+
+    <h2>Contradiction rule <span class="tag locked">v4.1</span></h2>
+    <p>Each lead contradicts their theme <strong>once per act</strong> without underlining: Mother hesitates; Father takes reckless shortcut (Act I); daughter's petty beat in prologue.</p>
+
+    <h2>Changelog snapshot</h2>
+    <p><strong>v4.3 → v4.4:</strong> Exit ordering + siphoning governs endings; three-plane TAB at summit; Companion formalised; Uncle translator + plane offer; endings A/B/C redesigned around plane collapse math.</p>
+    <p><strong>v4.4 → current:</strong> Uncle motivation reframed (volunteered, loved her, knew parents wouldn't accept the loss); prologue fracture visual clarified (fades to black, parents not shown); Warden clarified (blocks revival, withholds reason; execute = memory extraction / spare = direct reveal); Engineer gate scene cut (Act III TBD beat held); ritual documented as act-opening structure.</p>
+
+    <div class="related">
+      <h2>Related</h2>
+      <ul>
+        <li><a href="lore-world-rules.html">Lore &amp; world rules</a> — Planes, siphoning, exit math</li>
+        <li><a href="ritual.html">The ritual</a> — Act-opening structure</li>
+        <li><a href="endings.html">Endings</a> — A / B / C outcomes</li>
+        <li><a href="../CHARACTERS/uncle.html">The Uncle</a> — Full character doc</li>
+        <li><a href="../LEVEL_DESIGN/four-beat-rhythm.html">Four-beat zone rhythm</a> — Mountain Rule</li>
+        <li><a href="../COMBAT/overview.html">Combat overview</a> — Fracture Charge and Teleattack</li>
+      </ul>
+    </div>
+
+    <footer>
+      <a href="../MASTER.html">← MASTER</a> · <a href="index.html">STORY index</a>
+    </footer>
+  </main>
+</div>
+
 </body>
 </html>

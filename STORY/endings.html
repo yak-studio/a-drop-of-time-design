@@ -1,62 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Endings | A Drop of Time</title>
-<link rel="stylesheet" href="../styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Endings | A Drop of Time</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; background: #fff; color: #1a1a1a; }
+    a { color: #1a1a1a; }
+    a:hover { text-decoration: none; }
+    header { padding: 0.5rem 1.5rem; border-bottom: 1px solid #ddd; font-size: 0.85rem; color: #555; }
+    header a { color: #555; text-decoration: none; }
+    header a:hover { text-decoration: underline; }
+    .layout { display: flex; min-height: 100vh; }
+    nav { width: 220px; flex-shrink: 0; border-right: 1px solid #ddd; padding: 1.5rem 1rem; font-size: 0.85rem; }
+    nav h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 0.5rem; }
+    nav ul { list-style: none; }
+    nav ul li { margin-bottom: 0.25rem; }
+    nav ul li a { text-decoration: none; color: #333; }
+    nav ul li a:hover { text-decoration: underline; }
+    nav ul li.active a { font-weight: 600; color: #000; }
+    nav .section { margin-bottom: 1.25rem; }
+    main { flex: 1; padding: 2rem 2.5rem; max-width: 860px; }
+    h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .subtitle { color: #555; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .callout { border-left: 3px solid #aaa; padding: 0.6rem 1rem; background: #f8f8f8; font-size: 0.875rem; color: #444; margin-bottom: 1.75rem; }
+    .callout strong { color: #111; }
+    h2 { font-size: 1.15rem; font-weight: 700; margin: 2rem 0 0.6rem; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; }
+    h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.4rem; }
+    p { margin-bottom: 0.75rem; }
+    ul, ol { margin: 0.5rem 0 0.75rem 1.5rem; }
+    li { margin-bottom: 0.25rem; }
+    .tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; background: #eee; color: #555; padding: 0.15rem 0.4rem; border-radius: 2px; margin-left: 0.4rem; vertical-align: middle; }
+    .tag.locked { background: #dff0d8; color: #3c763d; }
+    .tag.open { background: #fcf8e3; color: #8a6d3b; }
+    .tag.tbd { background: #d9edf7; color: #31708f; }
+    table { border-collapse: collapse; width: 100%; margin: 0.75rem 0 1rem; font-size: 0.875rem; }
+    th { text-align: left; border-bottom: 2px solid #ddd; padding: 0.4rem 0.6rem; }
+    td { border-bottom: 1px solid #eee; padding: 0.4rem 0.6rem; vertical-align: top; }
+    .related { margin-top: 2.5rem; border-top: 1px solid #eee; padding-top: 1rem; font-size: 0.875rem; }
+    .related h2 { font-size: 0.9rem; border: none; margin: 0 0 0.5rem; }
+    .related ul { margin-left: 1rem; }
+    footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.8rem; color: #888; }
+    footer a { color: #888; }
+  </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <p class="crumbs"><a href="../MASTER.html">MASTER</a> / <a href="index.html">STORY</a> / Endings</p>
-  <h1>Endings</h1>
-  <p class="lead">Three unbearable outcomes. Exit order + siphoning rules <span class="tag locked">v4.4</span>. Pair with <a href="lore-world-rules.html#convergence">lore — Convergence</a>.</p>
+
+<header>
+  <a href="../MASTER.html">MASTER</a> / <a href="index.html">STORY</a> / Endings
 </header>
-<main id="main" class="content">
 
-<p class="tag draft">Presentation (length of stillness, final sting) is production tuning.</p>
+<div class="layout">
+  <nav>
+    <div class="section">
+      <h2>Story</h2>
+      <ul>
+        <li><a href="lore-world-rules.html">Lore &amp; world rules</a></li>
+        <li><a href="plot-and-acts.html">Plot &amp; acts</a></li>
+        <li><a href="ritual.html">The ritual</a></li>
+        <li><a href="dialogue-per-level.html">Dialogue per level</a></li>
+        <li class="active"><a href="endings.html">Endings</a></li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Sections</h2>
+      <ul>
+        <li><a href="../CHARACTERS/index.html">Characters</a></li>
+        <li><a href="../COMBAT/index.html">Combat</a></li>
+        <li><a href="../PUZZLES/index.html">Puzzles</a></li>
+        <li><a href="../LEVEL_DESIGN/index.html">Level design</a></li>
+        <li><a href="../TRAVERSAL/index.html">Traversal</a></li>
+        <li><a href="../ART_VISUAL/index.html">Art &amp; visual</a></li>
+        <li><a href="../AUDIO/index.html">Audio</a></li>
+        <li><a href="../TECHNICAL/index.html">Technical</a></li>
+        <li><a href="../PRODUCTION/index.html">Production</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<div class="callout">
-  <strong>Framing:</strong> No “good” ending — only which tragedy you can live with. The game does not moralise the menu; the <strong>gate</strong> and <strong>who walks first</strong> decide.
+  <main id="main">
+    <h1>Endings</h1>
+    <p class="subtitle">Three unbearable outcomes. Exit order + siphoning rules v4.4. Pair with <a href="lore-world-rules.html#convergence">lore — Convergence</a>.</p>
+
+    <div class="callout">
+      <strong>Framing:</strong> No "good" ending — only which tragedy you can live with. The game does not moralise the menu. The gate and who walks first decide everything.
+    </div>
+
+    <h2>Rules recap</h2>
+    <ul>
+      <li>Walking into the Core from your plane <strong>survives you</strong> and <strong>collapses that plane</strong>.</li>
+      <li>After the <strong>daughter</strong> exits to the Core, the gate seals for parents — her presence collapses remaining parent planes (13th as event).</li>
+      <li><strong>Order of exits</strong> determines A / B / C shape.</li>
+      <li><strong>Uncle</strong> may offer his plane — shifts consequences, not a redemption arc. Working idea; see <a href="../PRODUCTION/open-decisions-log.html">open decisions</a>.</li>
+    </ul>
+
+    <h2>Ending A — Let her rest <span class="tag locked">locked</span></h2>
+    <p><strong>Both parents</strong> walk out into the Core. Both planes collapse. They survive; they can touch each other for the first time since the prologue.</p>
+    <p>The daughter stays on her plane — contained. Siphoning is resolved; the world stabilises. She had already accepted staying; the parents almost undid it. <strong>They never know she chose.</strong> Companion remains with her.</p>
+    <p><strong>Image:</strong> stillness; shimmer of her; lucky stone on summit stone — ambiguity echo of the cairn.</p>
+    <p>The <strong>fourth ritual</strong> follows — see <a href="ritual.html">the ritual</a>. The only time the parents perform it together. The only time they can.</p>
+    <p><strong>Final sting:</strong> nickname TBD. Rarity rule applies — see <a href="../LEVEL_DESIGN/four-beat-rhythm.html#nickname">four-beat / nickname rule</a>.</p>
+
+    <h2>Ending B — The sacrifice <span class="tag locked">locked</span></h2>
+    <p><strong>One parent</strong> walks through. Their plane collapses; they are gone.</p>
+    <p>Daughter remains contained. The <strong>other parent</strong> remains on their plane. One plane collapse is not enough to rebalance — <strong>siphoning continues</strong>; the world is still dying slowly. The surviving parent gained nothing but loss.</p>
+    <p>Cruel because it is <strong>pointless</strong>.</p>
+
+    <h2>Ending C — The absolute orphan <span class="tag locked">locked</span></h2>
+    <p><strong>Daughter walks first.</strong> Both parent planes collapse; the parents become absence. She wakes in the Core — alive, alone; world unified; no siphoning.</p>
+    <p>Uncle variable: kneels / drained / absent — gear in snow. Lucky stone; <em>"That counts."</em> Companion on the empty daughter plane. Long hold on final image — player stops when ready.</p>
+
+    <h2>Hidden cost variant</h2>
+    <p>An exit order where the daughter lives alongside a surviving parent in the Core implies an <strong>expiration-date world</strong> — she is the 13th draw alive among them, siphoning slowly resuming. Document as discoverable consequence, not a main-menu ending label.</p>
+
+    <h2>Player-visible choices</h2>
+
+    <table>
+      <tr>
+        <th>Moment</th>
+        <th>What it steers</th>
+      </tr>
+      <tr>
+        <td>Warden (Act I) — execute or spare</td>
+        <td>Philosophy; memory extraction (Uncle revealed visually) if kill vs direct naming if spare. Plane collapses either way.</td>
+      </tr>
+      <tr>
+        <td>Summit exit order</td>
+        <td>Ending A / B / C family topology</td>
+      </tr>
+      <tr>
+        <td>Uncle plane offer</td>
+        <td>Consequence shading — not a separate ending letter. Working idea; TBD.</td>
+      </tr>
+    </table>
+
+    <div class="related">
+      <h2>Related</h2>
+      <ul>
+        <li><a href="lore-world-rules.html">Lore &amp; world rules</a> — Convergence and exit math</li>
+        <li><a href="ritual.html">The ritual</a> — Fourth ritual in Ending A</li>
+        <li><a href="plot-and-acts.html">Plot &amp; acts</a> — Summit sequence and Uncle role</li>
+        <li><a href="../PRODUCTION/open-decisions-log.html">Open decisions</a> — Uncle plane offer; uncle sacrifice working idea</li>
+      </ul>
+    </div>
+
+    <footer>
+      <a href="../MASTER.html">← MASTER</a> · <a href="index.html">STORY index</a>
+    </footer>
+  </main>
 </div>
 
-<h2 id="rules">Rules recap</h2>
-<ul>
-  <li>Walking into the Core from your plane <strong>survives</strong> you and <strong>collapses</strong> that plane.</li>
-  <li>After the <strong>daughter</strong> exits to the Core, the gate seals for parents — her presence collapses remaining parent planes.</li>
-  <li><strong>Order</strong> determines A / B / C shape.</li>
-  <li><strong>Uncle</strong> may offer his plane — shifts consequences / math, not a redemption arc.</li>
-</ul>
-
-<h2 id="ending-a">Ending A — Let her rest</h2>
-<p><strong>Both parents</strong> walk out into the Core; <strong>both</strong> planes collapse. They survive; can touch for first time since prologue.</p>
-<p><strong>Daughter</strong> stays on her plane — contained. Siphoning resolved; world stable. She had accepted staying; parents almost undid it; <strong>they never know</strong> she chose. Companion remains with her.</p>
-<p><strong>Image:</strong> stillness; shimmer of her; lucky stone on summit stone — ambiguity echo of cairn. <strong>Nickname “Pip”</strong> — final whisper optional sting; rarity rule: see <a href="../LEVEL_DESIGN/four-beat-rhythm.html#nickname">four-beat / nickname rule</a>.</p>
-
-<h2 id="ending-b">Ending B — The sacrifice</h2>
-<p><strong>One parent</strong> walks through; their plane collapses; they are gone.</p>
-<p>Daughter contained; <strong>other parent</strong> remains on their plane. <strong>One</strong> plane drop is not enough to rebalance — <strong>siphoning continues</strong>; world still dying slowly. Surviving parent gained nothing but loss. Cruel because <strong>pointless</strong>.</p>
-
-<h2 id="ending-c">Ending C — The absolute orphan</h2>
-<p><strong>Daughter walks first.</strong> Both parent planes collapse; parents become absence. She wakes in Core — alive, alone; world unified; no siphoning.</p>
-<p>Uncle variable: kneels / drained / absent — gear in snow. Lucky stone; <em>“That counts.”</em> Companion on empty daughter plane. Long hold on final image — player stops when ready.</p>
-
-<h2 id="hidden-cost">Hidden cost variant</h2>
-<p>Ordering where daughter lives with a surviving parent in Core can imply <strong>expiration-date world</strong> — she is 13th draw alive among them. Document as discoverable consequence, not main-menu ending label.</p>
-
-<h2 id="player-choices">Player-visible choices (summary)</h2>
-<table class="data">
-  <thead><tr><th>Moment</th><th>What it steers</th></tr></thead>
-  <tbody>
-    <tr><td>Warden (Act I)</td><td>Execute vs spare — philosophy, memory extraction if kill, plane still collapses either way for unlock</td></tr>
-    <tr><td>Summit exit order</td><td>Ending A / B / C family topology</td></tr>
-    <tr><td>Uncle plane offer</td><td>Consequence shading, not a separate “ending letter”</td></tr>
-  </tbody>
-</table>
-
-</main>
-<footer class="site-footer"><a href="../MASTER.html">← MASTER</a> · <a href="index.html">STORY index</a></footer>
-<script id="adot-doc-nav" data-depth="1" src="../nav.js"></script>
 </body>
 </html>

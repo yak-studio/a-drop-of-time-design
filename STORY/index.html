@@ -1,28 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STORY — index | A Drop of Time</title>
-<link rel="stylesheet" href="../styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STORY | A Drop of Time</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; background: #fff; color: #1a1a1a; }
+    a { color: #1a1a1a; }
+    a:hover { text-decoration: none; }
+    header { padding: 0.5rem 1.5rem; border-bottom: 1px solid #ddd; font-size: 0.85rem; color: #555; }
+    header a { color: #555; text-decoration: none; }
+    header a:hover { text-decoration: underline; }
+    .layout { display: flex; min-height: 100vh; }
+    nav { width: 220px; flex-shrink: 0; border-right: 1px solid #ddd; padding: 1.5rem 1rem; font-size: 0.85rem; }
+    nav h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 0.5rem; }
+    nav ul { list-style: none; }
+    nav ul li { margin-bottom: 0.25rem; }
+    nav ul li a { text-decoration: none; color: #333; }
+    nav ul li a:hover { text-decoration: underline; }
+    nav .section { margin-bottom: 1.25rem; }
+    main { flex: 1; padding: 2rem 2.5rem; max-width: 860px; }
+    h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .subtitle { color: #555; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.15rem; font-weight: 700; margin: 2rem 0 0.6rem; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; }
+    p { margin-bottom: 0.75rem; }
+    ul { list-style: none; margin: 0; }
+    ul li { margin-bottom: 0.6rem; }
+    ul li a { font-weight: 600; text-decoration: none; }
+    ul li a:hover { text-decoration: underline; }
+    .desc { color: #555; font-size: 0.875rem; margin-left: 0.25rem; }
+    .tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; background: #eee; color: #555; padding: 0.15rem 0.4rem; border-radius: 2px; margin-left: 0.4rem; vertical-align: middle; }
+    .tag.stub { background: #f2dede; color: #a94442; }
+    footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.8rem; color: #888; }
+    footer a { color: #888; }
+  </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <p class="crumbs"><a href="../MASTER.html">MASTER</a> / STORY</p>
-  <h1>STORY</h1>
-  <p class="lead">Section index. See <a href="../MASTER.html">MASTER</a> for the full map and LLM routing.</p>
+
+<header>
+  <a href="../MASTER.html">MASTER</a> / STORY
 </header>
-<main id="main" class="content">
-<ul class="doc-list">
-  <li><a href="lore-world-rules.html">Lore & world rules</a> — Planes, collapse, siphoning, Convergence exits.</li>
-  <li><a href="plot-and-acts.html">Plot & acts</a> — Spine from prologue to summit.</li>
-  <li><a href="dialogue-per-level.html">Dialogue per level</a> — Lines keyed to levels/sections.</li>
-  <li><a href="ritual.html">The ritual</a> — Fire, items, silhouette vocabulary.</li>
-  <li><a href="endings.html">Endings</a> — Routes A / B / C and epilogues.</li>
-</ul>
-</main>
-<footer class="site-footer"><a href="../MASTER.html">← MASTER</a></footer>
-<script id="adot-doc-nav" data-depth="1" src="../nav.js"></script>
+
+<div class="layout">
+  <nav>
+    <div class="section">
+      <h2>Story</h2>
+      <ul>
+        <li><a href="lore-world-rules.html">Lore &amp; world rules</a></li>
+        <li><a href="plot-and-acts.html">Plot &amp; acts</a></li>
+        <li><a href="ritual.html">The ritual</a></li>
+        <li><a href="dialogue-per-level.html">Dialogue per level</a></li>
+        <li><a href="endings.html">Endings</a></li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Sections</h2>
+      <ul>
+        <li><a href="../CHARACTERS/index.html">Characters</a></li>
+        <li><a href="../COMBAT/index.html">Combat</a></li>
+        <li><a href="../PUZZLES/index.html">Puzzles</a></li>
+        <li><a href="../LEVEL_DESIGN/index.html">Level design</a></li>
+        <li><a href="../TRAVERSAL/index.html">Traversal</a></li>
+        <li><a href="../ART_VISUAL/index.html">Art &amp; visual</a></li>
+        <li><a href="../AUDIO/index.html">Audio</a></li>
+        <li><a href="../TECHNICAL/index.html">Technical</a></li>
+        <li><a href="../PRODUCTION/index.html">Production</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <h1>STORY</h1>
+    <p class="subtitle">Narrative docs. See <a href="../MASTER.html">MASTER</a> for full map and LLM routing.</p>
+
+    <h2>Documents</h2>
+    <ul>
+      <li>
+        <a href="lore-world-rules.html">Lore &amp; world rules</a>
+        <span class="desc">— Planes, the Core, siphoning v4.4, the 13-Temporal math, Convergence exit rules, Uncle as translator, Companion.</span>
+      </li>
+      <li>
+        <a href="plot-and-acts.html">Plot &amp; acts</a>
+        <span class="desc">— Full story spine: prologue, Acts I–III, interludes, Warden beat, revival reveal, summit argument. Changelog of major changes.</span>
+      </li>
+      <li>
+        <a href="ritual.html">The ritual</a>
+        <span class="desc">— Temporal death rite; act-opening structure; four instances; prologue campfire echo; items TBD.</span>
+      </li>
+      <li>
+        <a href="dialogue-per-level.html">Dialogue per level</a> <span class="tag stub">stub</span>
+        <span class="desc">— Beats keyed to levels/sections. Not yet written.</span>
+      </li>
+      <li>
+        <a href="endings.html">Endings</a>
+        <span class="desc">— Exit-order outcomes A (let her rest) / B (the sacrifice) / C (the absolute orphan); hidden cost variant; player choices table.</span>
+      </li>
+    </ul>
+
+    <footer>
+      <a href="../MASTER.html">← MASTER</a>
+    </footer>
+  </main>
+</div>
+
 </body>
 </html>

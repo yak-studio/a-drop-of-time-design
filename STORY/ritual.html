@@ -1,23 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The ritual | A Drop of Time</title>
-<link rel="stylesheet" href="../styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The ritual | A Drop of Time</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; background: #fff; color: #1a1a1a; }
+    a { color: #1a1a1a; }
+    a:hover { text-decoration: none; }
+    header { padding: 0.5rem 1.5rem; border-bottom: 1px solid #ddd; font-size: 0.85rem; color: #555; }
+    header a { color: #555; text-decoration: none; }
+    header a:hover { text-decoration: underline; }
+    .layout { display: flex; min-height: 100vh; }
+    nav { width: 220px; flex-shrink: 0; border-right: 1px solid #ddd; padding: 1.5rem 1rem; font-size: 0.85rem; }
+    nav h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 0.5rem; }
+    nav ul { list-style: none; }
+    nav ul li { margin-bottom: 0.25rem; }
+    nav ul li a { text-decoration: none; color: #333; }
+    nav ul li a:hover { text-decoration: underline; }
+    nav ul li.active a { font-weight: 600; color: #000; }
+    nav .section { margin-bottom: 1.25rem; }
+    main { flex: 1; padding: 2rem 2.5rem; max-width: 860px; }
+    h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .subtitle { color: #555; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .callout { border-left: 3px solid #aaa; padding: 0.6rem 1rem; background: #f8f8f8; font-size: 0.875rem; color: #444; margin-bottom: 1.75rem; }
+    .callout strong { color: #111; }
+    .callout.warn { border-color: #e8a838; background: #fffbf0; }
+    h2 { font-size: 1.15rem; font-weight: 700; margin: 2rem 0 0.6rem; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; }
+    h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.4rem; }
+    p { margin-bottom: 0.75rem; }
+    ul, ol { margin: 0.5rem 0 0.75rem 1.5rem; }
+    li { margin-bottom: 0.25rem; }
+    .tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; background: #eee; color: #555; padding: 0.15rem 0.4rem; border-radius: 2px; margin-left: 0.4rem; vertical-align: middle; }
+    .tag.locked { background: #dff0d8; color: #3c763d; }
+    .tag.open { background: #fcf8e3; color: #8a6d3b; }
+    .tag.tbd { background: #d9edf7; color: #31708f; }
+    table { border-collapse: collapse; width: 100%; margin: 0.75rem 0 1rem; font-size: 0.875rem; }
+    th { text-align: left; border-bottom: 2px solid #ddd; padding: 0.4rem 0.6rem; }
+    td { border-bottom: 1px solid #eee; padding: 0.4rem 0.6rem; vertical-align: top; }
+    .related { margin-top: 2.5rem; border-top: 1px solid #eee; padding-top: 1rem; font-size: 0.875rem; }
+    .related h2 { font-size: 0.9rem; border: none; margin: 0 0 0.5rem; }
+    .related ul { margin-left: 1rem; }
+    footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.8rem; color: #888; }
+    footer a { color: #888; }
+  </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <p class="crumbs"><a href="../MASTER.html">MASTER</a> / <a href="../STORY/index.html">STORY</a> / The ritual</p>
-  <h1>The ritual</h1>
-  <p class="lead">Fire, items, silhouette language.</p>
+
+<header>
+  <a href="../MASTER.html">MASTER</a> / <a href="index.html">STORY</a> / The ritual
 </header>
-<main id="main" class="content">
-<p class="tag draft">Stub — replace with canon.</p>
-<p>Add content here. For images, add a folder such as <code>../images/</code> and reference with relative URLs.</p>
-</main>
-<footer class="site-footer"><a href="../MASTER.html">← MASTER</a> · <a href="../STORY/index.html">STORY index</a></footer>
-<script id="adot-doc-nav" data-depth="1" src="../nav.js"></script>
+
+<div class="layout">
+  <nav>
+    <div class="section">
+      <h2>Story</h2>
+      <ul>
+        <li><a href="lore-world-rules.html">Lore &amp; world rules</a></li>
+        <li><a href="plot-and-acts.html">Plot &amp; acts</a></li>
+        <li class="active"><a href="ritual.html">The ritual</a></li>
+        <li><a href="dialogue-per-level.html">Dialogue per level</a></li>
+        <li><a href="endings.html">Endings</a></li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Sections</h2>
+      <ul>
+        <li><a href="../CHARACTERS/index.html">Characters</a></li>
+        <li><a href="../COMBAT/index.html">Combat</a></li>
+        <li><a href="../PUZZLES/index.html">Puzzles</a></li>
+        <li><a href="../LEVEL_DESIGN/index.html">Level design</a></li>
+        <li><a href="../TRAVERSAL/index.html">Traversal</a></li>
+        <li><a href="../ART_VISUAL/index.html">Art &amp; visual</a></li>
+        <li><a href="../AUDIO/index.html">Audio</a></li>
+        <li><a href="../TECHNICAL/index.html">Technical</a></li>
+        <li><a href="../PRODUCTION/index.html">Production</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <h1>The ritual</h1>
+    <p class="subtitle">The Temporal death rite. Structural device for act transitions. Four instances across the game.</p>
+
+    <div class="callout">
+      <strong>Locked structure, open variables.</strong> The ritual form is locked. Items submitted in each instance are TBD — see below.
+    </div>
+
+    <h2>What the ritual is</h2>
+    <p>When a Temporal dies, their people observe a rite: a fire is lit, and one personal item belonging to the deceased is offered to it. The item is delivered using the teleport ability — it materialises out of the air above the flames, as if pulled from another plane. The fire responds unnaturally: colour, height, and behaviour shift in ways that cannot be explained by combustion alone.</p>
+    <p>The daughter was a Temporal. This is her ritual.</p>
+    <p>Both Mother and Father each offer <strong>one item</strong> — two per ritual. As they do, the world splits visually: one half shows Mother's plane, the other Father's. Then Mother's plane fades, and gameplay begins on Father's plane.</p>
+
+    <h2>Structural role — act transitions</h2>
+    <p>The ritual opens <strong>Acts I, II, and III</strong>. It is the first thing the player sees after each interlude (or the prologue). The act then begins proper as Mother's plane fades and control passes to Father.</p>
+    <p>The <strong>same locations</strong> are used each time — coincidentally mirroring the prologue campfire site at each act's staging ground. This is never commented on.</p>
+    <p>The three variables that change across instances are:</p>
+    <ul>
+      <li><strong>Fire size</strong> — larger in Act I, diminishing by Act III</li>
+      <li><strong>Parents' posture</strong> — Act I: raw grief; Act II: hardening; Act III: hollowed</li>
+      <li><strong>Items submitted</strong> — TBD; should reflect what each parent has lost or is choosing to carry (see below)</li>
+    </ul>
+
+    <h2>The four instances</h2>
+
+    <table>
+      <tr>
+        <th>Instance</th>
+        <th>Location</th>
+        <th>Fire</th>
+        <th>Posture</th>
+        <th>Items</th>
+      </tr>
+      <tr>
+        <td><strong>1 — Act I</strong></td>
+        <td>Valley forest</td>
+        <td>Large, raw</td>
+        <td>Devastated, barely upright</td>
+        <td><span class="tag tbd">TBD</span></td>
+      </tr>
+      <tr>
+        <td><strong>2 — Act II</strong></td>
+        <td>Moraine</td>
+        <td>Steady, controlled</td>
+        <td>Hardening; deliberate</td>
+        <td><span class="tag tbd">TBD</span></td>
+      </tr>
+      <tr>
+        <td><strong>3 — Act III</strong></td>
+        <td>Death zone</td>
+        <td>Small, guttering</td>
+        <td>Hollowed; mechanical</td>
+        <td><span class="tag tbd">TBD</span></td>
+      </tr>
+      <tr>
+        <td><strong>4 — Ending A only</strong></td>
+        <td>Summit</td>
+        <td>TBD</td>
+        <td>After the second loss; parents together for the first time</td>
+        <td><span class="tag tbd">TBD</span></td>
+      </tr>
+    </table>
+
+    <h2>The fourth ritual <span class="tag locked">Ending A only</span></h2>
+    <p>In <a href="endings.html">Ending A</a>, both parents walk out into the Core and choose to leave their daughter contained on her plane. She had accepted this. They almost undid it. Then they didn't.</p>
+    <p>The fourth ritual happens at the summit after — a second acknowledgement of losing her, this time by choice. It is the only ritual the parents perform <strong>together</strong>. It is also the only moment since the prologue they can touch.</p>
+    <p>There is always a fourth ritual. The number four is not accidental — it is how the Temporals count a complete rite.</p>
+
+    <h2>Prologue echo</h2>
+    <p>The prologue opens with the family at a campfire — same visual, same warmth, same fire. The ritual repurposes that image three times at increasing cost. No character acknowledges the parallel. It does not need to be said.</p>
+
+    <h2>Items — design notes <span class="tag tbd">TBD</span></h2>
+    <p>Items are not yet decided. When designing them, consider:</p>
+    <ul>
+      <li>The prologue plants: <strong>mismatched socks</strong>, <strong>lucky stone</strong>. These are load-bearing emotional objects — if used as ritual items they carry enormous weight, but they may be too obvious.</li>
+      <li>Each ritual should show a different facet of what that parent is grieving — not the same object three times.</li>
+      <li>The items materialise from the air using the teleport ability. They should feel like they come from somewhere personal, not found on the ground.</li>
+      <li>Mother and Father offer different items — asymmetric grief, not unified mourning.</li>
+    </ul>
+
+    <div class="related">
+      <h2>Related</h2>
+      <ul>
+        <li><a href="plot-and-acts.html">Plot &amp; acts</a> — Where each ritual sits in the act structure</li>
+        <li><a href="endings.html">Endings</a> — Ending A and the fourth ritual</li>
+        <li><a href="lore-world-rules.html">Lore &amp; world rules</a> — Temporal death and plane collapse</li>
+        <li><a href="../ART_VISUAL/silhouette-language.html">Silhouette language</a> — Visual rules that may govern the ritual split-world shot</li>
+        <li><a href="../AUDIO/ritual-sound.html">Ritual sound</a> — Locked cue when item meets fire</li>
+      </ul>
+    </div>
+
+    <footer>
+      <a href="../MASTER.html">← MASTER</a> · <a href="index.html">STORY index</a>
+    </footer>
+  </main>
+</div>
+
 </body>
 </html>
